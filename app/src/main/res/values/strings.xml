@@ -2,7 +2,7 @@
     <string name="app_name">HealthAssistant</string>
     <string name="sport">运动</string>
     <string name="information">资讯</string>
-    <string name="schedule">计划</string>
+    <string name="diet">饮食</string>
     <string name="individuality">我的</string>
     <string name="const_name">昵称：</string>
     <string name="const_id">ID:</string>
