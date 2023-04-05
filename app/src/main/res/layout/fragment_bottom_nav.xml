@@ -9,11 +9,11 @@
     tools:layout_editor_absoluteY="25dp">
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/health"
+        android:id="@+id/sport"
         style="@style/Widget.MaterialComponents.Button.TextButton"
         android:layout_width="0dp"
         android:layout_height="70dp"
-        android:drawableTop="@drawable/jiankang"
+        android:drawableTop="@drawable/sport"
         android:insetTop="0dp"
         android:insetBottom="0dp"
         android:text="@string/sport"
@@ -25,11 +25,11 @@
         app:rippleColor="@color/ripple_color" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/community"
+        android:id="@+id/information"
         style="@style/Widget.MaterialComponents.Button.TextButton"
         android:layout_width="0dp"
         android:layout_height="70dp"
-        android:drawableTop="@drawable/shequ"
+        android:drawableTop="@drawable/information"
         android:insetTop="0dp"
         android:insetBottom="0dp"
         android:text="@string/information"
@@ -41,18 +41,18 @@
 
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/schedule"
+        android:id="@+id/diet"
         style="@style/Widget.MaterialComponents.Button.TextButton"
         android:layout_width="0dp"
         android:layout_height="70dp"
-        android:drawableTop="@drawable/jihua"
+        android:drawableTop="@drawable/diet"
         android:insetTop="0dp"
         android:insetBottom="0dp"
-        android:text="@string/schedule"
+        android:text="@string/diet"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline4"
-        app:layout_constraintStart_toEndOf="@+id/community"
+        app:layout_constraintStart_toEndOf="@+id/information"
         app:rippleColor="@color/ripple_color" />
 
     <com.google.android.material.button.MaterialButton
@@ -60,7 +60,7 @@
         style="@style/Widget.MaterialComponents.Button.TextButton"
         android:layout_width="0dp"
         android:layout_height="70dp"
-        android:drawableTop="@drawable/wode"
+        android:drawableTop="@drawable/individuality"
         android:insetTop="0dp"
         android:insetBottom="0dp"
         android:text="@string/individuality"
