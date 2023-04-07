@@ -9,6 +9,13 @@
     tools:context=".ui.common.MainActivity"
     tools:layout_editor_absoluteY="25dp">
 
+    <FrameLayout
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/fragment_bottom_nav"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <fragment
         android:id="@+id/fragment_bottom_nav"
         android:name="com.dmn.healthassistant.ui.common.BottomFragment"

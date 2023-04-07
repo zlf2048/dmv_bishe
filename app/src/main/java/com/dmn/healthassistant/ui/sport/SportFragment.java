@@ -1,20 +1,16 @@
-package com.dmn.healthassistant.ui.common;
+package com.dmn.healthassistant.ui.sport;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import androidx.fragment.app.Fragment;
-
 import com.dmn.healthassistant.R;
 
-public class BottomFragment extends Fragment {
-
+public class SportFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_bottom_nav, container, false);
-        System.out.println("what fuck");
+        View view = inflater.inflate(R.layout.empty, container, false);
         return view;
     }
 }
