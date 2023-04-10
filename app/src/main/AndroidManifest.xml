@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.StudentHealth">
 
-        <activity android:name=".ui.common.MainActivity"
+        <activity android:name=".ui.common.Splash"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,6 +21,9 @@
         </activity>
         <activity android:name=".ui.individuality.login.LoginActivity" />
         <activity android:name=".ui.individuality.login.RegisterActivity" />
+
+        <activity android:name=".ui.common.MainActivity"/>
+
     </application>
 
 </manifest>
