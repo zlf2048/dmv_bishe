@@ -39,7 +39,7 @@ public class IndividualityTopUnloginFragment extends Fragment {
 //        constraintLayout.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
-//                Toast.makeText(activity, "准备登陆", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(activity, "准备登录", Toast.LENGTH_SHORT).show();
 //            }
 //        });
 //    } else {

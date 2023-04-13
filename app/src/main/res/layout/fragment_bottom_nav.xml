@@ -43,6 +43,7 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/diet"
+        android:onClick="onClick_diet"
         style="@style/Widget.MaterialComponents.Button.TextButton"
         android:layout_width="0dp"
         android:layout_height="70dp"

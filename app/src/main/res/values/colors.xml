@@ -289,4 +289,5 @@
     <color name="text_hint">#bfbfbf</color>
     <color name="checkbox_gray">#757575</color>
     <color name="error_color">#BC2843</color>
+    <color name="lavender">#8692f7</color>
 </resources>

@@ -10,6 +10,9 @@ import android.widget.Toast;
 import com.dmn.healthassistant.R;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
+import com.minapp.android.sdk.auth.Auth;
+import com.minapp.android.sdk.database.Record;
+import com.minapp.android.sdk.database.Table;
 
 public class LoginActivity extends AppCompatActivity {
     private TextView register, forgetPassword;
@@ -40,10 +43,47 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String userNameText = userName.getText().toString();
                 String accountPasswordText = accountPassword.getText().toString();
-                if ((userNameText.equals("15295751665") && accountPasswordText.equals("123456"))) {
-                    Toast.makeText(getApplicationContext(), "登陆成功", Toast.LENGTH_SHORT).show();
-                    finish();
-                }
+                //注册
+//                new Thread(new Runnable(){
+//                    @Override
+//                    public void run() {
+//                        try {
+//                            Auth.signUpByUsername("学妹", "大美女");
+//                        } catch (Exception e) {
+//                            e.printStackTrace();
+//                        }
+//
+//                        Table product = new Table("product");
+//                    }
+//                }).start();
+
+                new Thread(new Runnable(){
+                    @Override
+                    public void run() {
+                        try {
+//                            Auth.signUpByUsername("xxy","dmn");
+                            Auth.signInByUsername("xxy", "dmn");
+                        } catch (Exception e) {
+                            System.out.println("登录注册异常了");
+                            throw new RuntimeException(e);
+                        }
+
+                        Table product = new Table("product");//操作表“product"
+                        Record record = product.createRecord();//弄一个record对象，对应一条数据，比如表头是姓名年龄， xxy 21 就是一条数据
+                        record.put("name","张老师");
+                        try {
+                            record.save();
+                        }catch (Exception e){
+                            System.out.println("CRUD异常了");
+                            System.out.println(e);
+                        }
+                    }
+                }).start();
+
+//                if ((userNameText.equals("15295751665") && accountPasswordText.equals("123456"))) {
+//                    Toast.makeText(getApplicationContext(), "登录成功", Toast.LENGTH_SHORT).show();
+//                    finish();
+//                }
             }
         });
 //
