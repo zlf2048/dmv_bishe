@@ -10,6 +10,7 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.dmn.healthassistant.R;
+import com.dmn.healthassistant.ui.common.MainActivity;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.minapp.android.sdk.auth.Auth;
@@ -58,6 +59,10 @@ public class LoginActivity extends AppCompatActivity {
                 }).start();
 
                 loginStatus();
+                Toast.makeText(getApplicationContext(), "登录成功", Toast.LENGTH_SHORT).show();
+                finish();
+                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                startActivity(intent);
 //                unLoginStatus();
             }
         });

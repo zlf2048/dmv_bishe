@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         } else {
             replaceFragment(new IndividualityUnloginFragment());
         }
+//        replaceFragment(new IndividualityUnloginFragment());
     }
     public void onClick_sport(View view) {
         System.out.println("nmsl");
