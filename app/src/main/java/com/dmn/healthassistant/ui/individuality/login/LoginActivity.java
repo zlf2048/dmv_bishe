@@ -43,19 +43,6 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String userNameText = userName.getText().toString();
                 String accountPasswordText = accountPassword.getText().toString();
-                //注册
-//                new Thread(new Runnable(){
-//                    @Override
-//                    public void run() {
-//                        try {
-//                            Auth.signUpByUsername("学妹", "大美女");
-//                        } catch (Exception e) {
-//                            e.printStackTrace();
-//                        }
-//
-//                        Table product = new Table("product");
-//                    }
-//                }).start();
 
                 new Thread(new Runnable(){
                     @Override
