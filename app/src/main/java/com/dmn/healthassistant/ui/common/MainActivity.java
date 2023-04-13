@@ -1,6 +1,8 @@
 package com.dmn.healthassistant.ui.common;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +11,7 @@ import androidx.fragment.app.*;
 
 import com.dmn.healthassistant.R;
 import com.dmn.healthassistant.ui.diet.DietFragment;
+import com.dmn.healthassistant.ui.individuality.IndividualityLoginFragment;
 import com.dmn.healthassistant.ui.individuality.IndividualityUnloginFragment;
 import com.dmn.healthassistant.ui.sport.SportFragment;
 import com.google.android.material.button.MaterialButton;
@@ -33,7 +36,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClick_individuality(View view) {
         System.out.println("nmsl");
-        replaceFragment(new IndividualityUnloginFragment());
+        if (judgeLogin()) {
+            replaceFragment(new IndividualityLoginFragment());
+        } else {
+            replaceFragment(new IndividualityUnloginFragment());
+        }
     }
     public void onClick_sport(View view) {
         System.out.println("nmsl");
@@ -58,5 +65,12 @@ public class MainActivity extends AppCompatActivity {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.remove(fragment);
         fragmentTransaction.commit();
+    }
+
+    private boolean judgeLogin() {
+        SharedPreferences sharedPreferences = getSharedPreferences("login", MODE_PRIVATE);
+        boolean isLogin = sharedPreferences.getBoolean("isLogin", false);
+        System.out.println(isLogin);
+        return isLogin;
     }
 }

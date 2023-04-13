@@ -1,4 +1,4 @@
-package com.dmn.healthassistant.ui.common;
+package com.dmn.healthassistant.ui.individuality;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,11 +9,10 @@ import androidx.fragment.app.Fragment;
 
 import com.dmn.healthassistant.R;
 
-public class BottomFragment extends Fragment {
-
+public class IndividualityLoginFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_bottom_nav, container, false);
+        View view = inflater.inflate(R.layout.fragment_individuality_login, container, false);
         return view;
     }
 }

@@ -2,6 +2,8 @@ package com.dmn.healthassistant.ui.individuality.login;
 
 import android.content.Intent;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
@@ -44,35 +46,49 @@ public class LoginActivity extends AppCompatActivity {
                 String userNameText = userName.getText().toString();
                 String accountPasswordText = accountPassword.getText().toString();
 
-                new Thread(new Runnable(){
+                new Thread(new Runnable() {
                     @Override
                     public void run() {
                         try {
-//                            Auth.signUpByUsername("xxy","dmn");
-                            Auth.signInByUsername("xxy", "dmn");
+                            Auth.signInByUsername(userNameText, accountPasswordText);
                         } catch (Exception e) {
-                            System.out.println("登录注册异常了");
-                            throw new RuntimeException(e);
-                        }
-
-                        Table product = new Table("product");//操作表“product"
-                        Record record = product.createRecord();//弄一个record对象，对应一条数据，比如表头是姓名年龄， xxy 21 就是一条数据
-                        record.put("name","张老师");
-                        try {
-                            record.save();
-                        }catch (Exception e){
-                            System.out.println("CRUD异常了");
                             System.out.println(e);
                         }
                     }
                 }).start();
 
+                loginStatus();
+//                unLoginStatus();
+            }
+        });
+
+//        new Thread(new Runnable(){
+//                    @Override
+//                    public void run() {
+//                        try {
+////                            Auth.signUpByUsername("xxy","dmn");
+//                            Auth.signInByUsername("xxy", "dmn");
+//                        } catch (Exception e) {
+//                            System.out.println("登录注册异常了");
+//                            throw new RuntimeException(e);
+//                        }
+//
+//                        Table product = new Table("product");//操作表“product"
+//                        Record record = product.createRecord();//弄一个record对象，对应一条数据，比如表头是姓名年龄， xxy 21 就是一条数据
+//                        record.put("name","张老师");
+//                        try {
+//                            record.save();
+//                        }catch (Exception e){
+//                            System.out.println("CRUD异常了");
+//                            System.out.println(e);
+//                        }
+//                    }
+//                }).start();
+
 //                if ((userNameText.equals("15295751665") && accountPasswordText.equals("123456"))) {
 //                    Toast.makeText(getApplicationContext(), "登录成功", Toast.LENGTH_SHORT).show();
 //                    finish();
 //                }
-            }
-        });
 //
 //        rememberPasswordCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 //            @Override
@@ -88,5 +104,18 @@ public class LoginActivity extends AppCompatActivity {
 //                startActivity(intent);
 //            }
 //        });
+    }
+    public void loginStatus() {
+        SharedPreferences sharedPreferences = getSharedPreferences("login", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putBoolean("isLogin", true);
+        editor.apply();
+    }
+
+    public void unLoginStatus() {
+        SharedPreferences sharedPreferences = getSharedPreferences("login", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.remove("isLogin");
+        editor.apply();
     }
 }
