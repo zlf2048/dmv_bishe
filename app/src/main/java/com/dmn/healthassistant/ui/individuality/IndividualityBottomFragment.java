@@ -5,17 +5,23 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import com.dmn.healthassistant.R;
+import com.dmn.healthassistant.ui.individuality.setting.SettingActivity;
 //import com.dmn.healthassistant.ui.individuality.settings.SettingActivity;
 //import com.dmn.healthassistant.ui.individuality.mycollection.MyCollectionActivity;
 //import com.dmn.healthassistant.ui.individuality.myreply.ReplyActivity;
 //import com.dmn.healthassistant.ui.individuality.mytopic.MyTopicActivity;
 
 public class IndividualityBottomFragment extends Fragment {
+
+    private ConstraintLayout settings;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_individuality_bottom, container, false);
+        settings = view.findViewById(R.id.settings);
         return view;
     }
 
@@ -43,12 +49,12 @@ public class IndividualityBottomFragment extends Fragment {
 //                startActivity(intent);
 //            }
 //        });
-//        settings.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(getActivity(), SettingActivity.class);
-//                startActivity(intent);
-//            }
-//        });
+        settings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), SettingActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }
