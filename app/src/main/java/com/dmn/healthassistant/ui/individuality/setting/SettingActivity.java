@@ -2,6 +2,7 @@ package com.dmn.healthassistant.ui.individuality.setting;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -21,8 +22,15 @@ public class SettingActivity extends AppCompatActivity {
         mbtnLogOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(SettingActivity.this, "LogOut被点击了！", Toast.LENGTH_SHORT).show();
+                unLoginStatus();
+                Toast.makeText(SettingActivity.this, "已退出登录", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+    public void unLoginStatus() {
+        SharedPreferences sharedPreferences = getSharedPreferences("login", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.remove("isLogin");
+        editor.apply();
     }
 }

@@ -116,11 +116,4 @@ public class LoginActivity extends AppCompatActivity {
         editor.putBoolean("isLogin", true);
         editor.apply();
     }
-
-    public void unLoginStatus() {
-        SharedPreferences sharedPreferences = getSharedPreferences("login", MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.remove("isLogin");
-        editor.apply();
-    }
 }

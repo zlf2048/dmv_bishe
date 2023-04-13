@@ -10,6 +10,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import com.dmn.healthassistant.R;
 import com.dmn.healthassistant.ui.individuality.setting.SettingActivity;
+import com.google.android.material.button.MaterialButton;
 //import com.dmn.healthassistant.ui.individuality.settings.SettingActivity;
 //import com.dmn.healthassistant.ui.individuality.mycollection.MyCollectionActivity;
 //import com.dmn.healthassistant.ui.individuality.myreply.ReplyActivity;
@@ -17,7 +18,7 @@ import com.dmn.healthassistant.ui.individuality.setting.SettingActivity;
 
 public class IndividualityBottomFragment extends Fragment {
 
-    private ConstraintLayout settings;
+    private MaterialButton settings;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_individuality_bottom, container, false);
