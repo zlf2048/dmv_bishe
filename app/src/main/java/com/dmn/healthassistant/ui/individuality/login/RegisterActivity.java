@@ -2,15 +2,20 @@ package com.dmn.healthassistant.ui.individuality.login;
 
 import android.content.Intent;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.*;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.dmn.healthassistant.R;
+import com.dmn.healthassistant.ui.common.MainActivity;
 import com.dmn.healthassistant.util.LogUtil;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.*;
+import com.minapp.android.sdk.auth.Auth;
 
 public class RegisterActivity extends AppCompatActivity {
     private TextInputEditText registerUserEditText,  registerPasswordEditText;
@@ -22,14 +27,15 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        registerUserEditText = findViewById(R.id.registerUserEditText);
-        registerPasswordEditText = findViewById(R.id.registerPasswordEditText);
+        registerUserEditText = findViewById(R.id.registerUserEditText);  //用户名
+        registerPasswordEditText = findViewById(R.id.registerPasswordEditText);  //密码
         registerUserTextInputLayout = findViewById(R.id.registerUserTextInputLayout);
-        registerMaterialButton = findViewById(R.id.registerMaterialButton);
+        registerMaterialButton = findViewById(R.id.registerMaterialButton);  //注册按钮
 
         registerUserEditText.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
@@ -37,7 +43,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                 LogUtil.d("RegisterActivity", "" + textCount);
 
-                switch(textCount) {
+                switch (textCount) {
                     case 0:
                     case 1:
                     case 2:
@@ -57,7 +63,8 @@ public class RegisterActivity extends AppCompatActivity {
             }
 
             @Override
-            public void afterTextChanged(Editable s) {}
+            public void afterTextChanged(Editable s) {
+            }
         });
 
 //        phoneNumberEditText.addTextChangedListener(new TextWatcher() {
@@ -89,7 +96,8 @@ public class RegisterActivity extends AppCompatActivity {
 
         registerPasswordEditText.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
@@ -97,7 +105,8 @@ public class RegisterActivity extends AppCompatActivity {
             }
 
             @Override
-            public void afterTextChanged(Editable s) {}
+            public void afterTextChanged(Editable s) {
+            }
         });
 
 //        findPassword.setOnClickListener(new View.OnClickListener() {
@@ -108,5 +117,45 @@ public class RegisterActivity extends AppCompatActivity {
 ////                startActivity(intent);
 //            }
 //        });
+
+
+        //请求注册
+        registerMaterialButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String usernameText = registerUserEditText.getText().toString();
+                String passwordText = registerPasswordEditText.getText().toString();
+
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            //Auth.signInByUsername(userNameText, accountPasswordText);
+                            Auth.signUpByUsername(usernameText, passwordText);
+                        } catch (Exception e) {
+                            System.out.println(e);
+                        }
+                    }
+                }).start();
+
+
+                //传递登录状态，表明已登录
+                loginStatus();
+                Toast.makeText(getApplicationContext(), "注册成功", Toast.LENGTH_SHORT).show();
+                finish();
+                Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
+    //设置为“已登录”
+    public void loginStatus() {
+        SharedPreferences sharedPreferences = getSharedPreferences("login", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putBoolean("isLogin", true);
+        editor.apply();
+
+    }
+
 }

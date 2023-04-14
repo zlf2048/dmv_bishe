@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-    //点人头，有未登录和已登录两个页面。
+    //点人头，有未登录和已登录两个页面。如果已登录，跳转到已登录界面；如果未登录，跳转到未登录界面
     public void onClick_individuality(View view) {
         if (judgeLogin()) {
             replaceFragment(new IndividualityLoginFragment());
@@ -42,6 +42,8 @@ public class MainActivity extends AppCompatActivity {
         }
 //        replaceFragment(new IndividualityUnloginFragment());
     }
+
+
     public void onClick_sport(View view) {
         replaceFragment(new SportFragment());
     }
@@ -64,11 +66,12 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.commit();
     }
 
-    //获取登录状态，判断是否登录。如果已登录，跳转到已登录界面；如果未登录，跳转到未登录界面
+    //获取登录状态，判断是否登录。
     private boolean judgeLogin() {
         SharedPreferences sharedPreferences = getSharedPreferences("login", MODE_PRIVATE);
         boolean isLogin = sharedPreferences.getBoolean("isLogin", false);
         System.out.println(isLogin);
         return isLogin;
     }
+
 }

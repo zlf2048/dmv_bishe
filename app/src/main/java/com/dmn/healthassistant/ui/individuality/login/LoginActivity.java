@@ -32,7 +32,7 @@ public class LoginActivity extends AppCompatActivity {
         userName = findViewById(R.id.userName);
         accountPassword = findViewById(R.id.accountPassword);
 
-
+        //点击新用户注册，跳转到注册界面
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
