@@ -18,7 +18,7 @@ import com.minapp.android.sdk.database.Record;
 import com.minapp.android.sdk.database.Table;
 
 public class LoginActivity extends AppCompatActivity {
-    private TextView register, forgetPassword;
+    private TextView register;
     private MaterialButton loginMaterialButton;
     private CheckBox rememberPasswordCheckBox;
     private TextInputEditText userName, accountPassword;
@@ -41,6 +41,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        //请求登录
         loginMaterialButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -58,6 +59,7 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 }).start();
 
+                //传递登录状态，表明已登录
                 loginStatus();
                 Toast.makeText(getApplicationContext(), "登录成功", Toast.LENGTH_SHORT).show();
                 finish();
@@ -79,7 +81,7 @@ public class LoginActivity extends AppCompatActivity {
 //
 //                        Table product = new Table("product");//操作表“product"
 //                        Record record = product.createRecord();//弄一个record对象，对应一条数据，比如表头是姓名年龄， xxy 21 就是一条数据
-//                        record.put("name","张老师");
+//                        record.put("name","张同学");
 //                        try {
 //                            record.save();
 //                        }catch (Exception e){
@@ -109,6 +111,8 @@ public class LoginActivity extends AppCompatActivity {
 //            }
 //        });
     }
+
+    //设置为“已登录”
     public void loginStatus() {
         SharedPreferences sharedPreferences = getSharedPreferences("login", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();

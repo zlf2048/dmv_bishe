@@ -13,10 +13,9 @@ import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.*;
 
 public class RegisterActivity extends AppCompatActivity {
-    private TextInputEditText registerUserEditText, phoneNumberEditText, passwordEditText;
+    private TextInputEditText registerUserEditText,  registerPasswordEditText;
     private TextInputLayout registerUserTextInputLayout;
-    private MaterialButton registerMaterialButton, getVerificationCodeMaterialButton;
-    private TextView findPassword;
+    private MaterialButton registerMaterialButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,12 +23,9 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
         registerUserEditText = findViewById(R.id.registerUserEditText);
-        phoneNumberEditText = findViewById(R.id.phoneNumberEditText);
-        passwordEditText = findViewById(R.id.passwordEditText);
+        registerPasswordEditText = findViewById(R.id.registerPasswordEditText);
         registerUserTextInputLayout = findViewById(R.id.registerUserTextInputLayout);
         registerMaterialButton = findViewById(R.id.registerMaterialButton);
-        getVerificationCodeMaterialButton = findViewById(R.id.getVerificationCodeMaterialButton);
-        findPassword = findViewById(R.id.findPassword);
 
         registerUserEditText.addTextChangedListener(new TextWatcher() {
             @Override
@@ -64,18 +60,18 @@ public class RegisterActivity extends AppCompatActivity {
             public void afterTextChanged(Editable s) {}
         });
 
-        phoneNumberEditText.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                // 这里实现提示手机号是否可用的逻辑，不要忘记处理当手机号已被使用时找回密码的逻辑
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {}
-        });
+//        phoneNumberEditText.addTextChangedListener(new TextWatcher() {
+//            @Override
+//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+//
+//            @Override
+//            public void onTextChanged(CharSequence s, int start, int before, int count) {
+//                // 这里实现提示手机号是否可用的逻辑，不要忘记处理当手机号已被使用时找回密码的逻辑
+//            }
+//
+//            @Override
+//            public void afterTextChanged(Editable s) {}
+//        });
 
         registerMaterialButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,14 +80,14 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
-        getVerificationCodeMaterialButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // 获取验证码
-            }
-        });
+//        getVerificationCodeMaterialButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                // 获取验证码
+//            }
+//        });
 
-        passwordEditText.addTextChangedListener(new TextWatcher() {
+        registerPasswordEditText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
 
@@ -104,13 +100,13 @@ public class RegisterActivity extends AppCompatActivity {
             public void afterTextChanged(Editable s) {}
         });
 
-        findPassword.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-//                Intent intent = new Intent(this, ForgetPasswordActivity.class);
-//                startActivity(intent);
-            }
-        });
+//        findPassword.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                finish();
+////                Intent intent = new Intent(this, ForgetPasswordActivity.class);
+////                startActivity(intent);
+//            }
+//        });
     }
 }

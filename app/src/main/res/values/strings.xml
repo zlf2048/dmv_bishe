@@ -9,7 +9,7 @@
     <string name="const_id">ID:</string>
     <string name="login_click">点击登录</string>
     <string name="movement_today">今日运动</string>
-    <string name="name">旧时光影柠檬酸</string>
+    <string name="name">张先生</string>
     <string name="id">000001</string>
     <string name="arrow">></string>
     <string name="collection">&#160;&#160;&#160;我的收藏</string>
@@ -20,7 +20,7 @@
     <string name="settings">&#160;&#160;&#160;设置</string>
     <string name="settings2">设置</string>
     <string name="login">登录</string>
-    <string name="account_hint">用户名/手机号</string>
+    <string name="account_hint">用户名</string>
     <string name="password_hint">密码</string>
     <string name="remember_password">记住密码</string>
     <string name="register">新用户注册</string>
