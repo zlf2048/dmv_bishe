@@ -35,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClick_individuality(View view) {
-        System.out.println("nmsl");
         if (judgeLogin()) {
             replaceFragment(new IndividualityLoginFragment());
         } else {
@@ -44,11 +43,9 @@ public class MainActivity extends AppCompatActivity {
 //        replaceFragment(new IndividualityUnloginFragment());
     }
     public void onClick_sport(View view) {
-        System.out.println("nmsl");
         replaceFragment(new SportFragment());
     }
     public void onClick_diet(View view) {
-        System.out.println("nmsl");
         replaceFragment(new DietFragment());
     }
 
