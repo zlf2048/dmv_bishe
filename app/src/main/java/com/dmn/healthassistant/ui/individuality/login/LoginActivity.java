@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.TextView;
@@ -49,24 +51,33 @@ public class LoginActivity extends AppCompatActivity {
                 String userNameText = userName.getText().toString();
                 String accountPasswordText = accountPassword.getText().toString();
 
+                final Handler handler = new Handler(Looper.getMainLooper());
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
                         try {
                             Auth.signInByUsername(userNameText, accountPasswordText);
+                            //传递登录状态，表明已登录
+                            LogUtil.loginStatus(LoginActivity.this);
+                            handler.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Toast.makeText(getApplicationContext(), "登录成功", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                            finish();
+                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                            startActivity(intent);
                         } catch (Exception e) {
-                            System.out.println(e);
+                            handler.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Toast.makeText(getApplicationContext(), "用户名或密码有误，请重新输入", Toast.LENGTH_SHORT).show();
+                                }
+                            });
                         }
                     }
                 }).start();
-
-                //传递登录状态，表明已登录
-                LogUtil.loginStatus(LoginActivity.this);
-//                loginStatus();
-                Toast.makeText(getApplicationContext(), "登录成功", Toast.LENGTH_SHORT).show();
-                finish();
-                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                startActivity(intent);
             }
         });
 
