@@ -140,7 +140,8 @@ public class RegisterActivity extends AppCompatActivity {
 
 
                 //传递登录状态，表明已登录
-                loginStatus();
+                LogUtil.loginStatus(RegisterActivity.this);
+//                loginStatus();
                 Toast.makeText(getApplicationContext(), "注册成功", Toast.LENGTH_SHORT).show();
                 finish();
                 Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
@@ -149,13 +150,4 @@ public class RegisterActivity extends AppCompatActivity {
         });
 
     }
-    //设置为“已登录”
-    public void loginStatus() {
-        SharedPreferences sharedPreferences = getSharedPreferences("login", MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putBoolean("isLogin", true);
-        editor.apply();
-
-    }
-
 }

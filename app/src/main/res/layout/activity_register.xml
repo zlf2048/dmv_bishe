@@ -91,11 +91,10 @@
         android:layout_marginEnd="60dp"
         android:backgroundTint="@color/ripple_color"
         android:text="@string/register_new"
-        app:layout_constraintBaseline_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/passwordTextLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passwordTextLayout"
         tools:layout_editor_absoluteY="320dp" />
 
     <View

@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.dmn.healthassistant.R;
 import com.dmn.healthassistant.ui.common.MainActivity;
+import com.dmn.healthassistant.util.LogUtil;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.minapp.android.sdk.auth.Auth;
@@ -60,7 +61,8 @@ public class LoginActivity extends AppCompatActivity {
                 }).start();
 
                 //传递登录状态，表明已登录
-                loginStatus();
+                LogUtil.loginStatus(LoginActivity.this);
+//                loginStatus();
                 Toast.makeText(getApplicationContext(), "登录成功", Toast.LENGTH_SHORT).show();
                 finish();
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
@@ -68,28 +70,22 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-//        new Thread(new Runnable(){
-//                    @Override
-//                    public void run() {
-//                        try {
-////                            Auth.signUpByUsername("xxy","dmn");
-//                            Auth.signInByUsername("xxy", "dmn");
-//                        } catch (Exception e) {
-//                            System.out.println("登录注册异常了");
-//                            throw new RuntimeException(e);
-//                        }
-//
-//                        Table product = new Table("product");//操作表“product"
-//                        Record record = product.createRecord();//弄一个record对象，对应一条数据，比如表头是姓名年龄， xxy 21 就是一条数据
-//                        record.put("name","张同学");
-//                        try {
-//                            record.save();
-//                        }catch (Exception e){
-//                            System.out.println("CRUD异常了");
-//                            System.out.println(e);
-//                        }
-//                    }
-//                }).start();
+//        测试数据库操作（CRUD）
+        new Thread(new Runnable(){
+                    @Override
+                    public void run() {
+
+                        Table product = new Table("product");//操作表“product"
+                        Record record = product.createRecord();//弄一个record对象，对应一条数据，比如表头是姓名年龄， xxy 21 就是一条数据
+                        record.put("name","张同学");
+                        try {
+                            record.save();
+                        }catch (Exception e){
+                            System.out.println("CRUD异常了");
+                            System.out.println(e);
+                        }
+                    }
+                }).start();
 
 //                if ((userNameText.equals("15295751665") && accountPasswordText.equals("123456"))) {
 //                    Toast.makeText(getApplicationContext(), "登录成功", Toast.LENGTH_SHORT).show();
@@ -110,13 +106,5 @@ public class LoginActivity extends AppCompatActivity {
 //                startActivity(intent);
 //            }
 //        });
-    }
-
-    //设置为“已登录”
-    public void loginStatus() {
-        SharedPreferences sharedPreferences = getSharedPreferences("login", MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putBoolean("isLogin", true);
-        editor.apply();
     }
 }

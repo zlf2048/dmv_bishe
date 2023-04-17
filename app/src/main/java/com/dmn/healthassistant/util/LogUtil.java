@@ -1,5 +1,8 @@
 package com.dmn.healthassistant.util;
 
+
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.util.Log;
 
 public class LogUtil {
@@ -38,5 +41,20 @@ public class LogUtil {
         if (level <= ERROR) {
             Log.e(tag, msg);
         }
+    }
+
+    //设置为“已登录”
+    public static void loginStatus(Context context) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences("login", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putBoolean("isLogin", true);
+        editor.apply();
+    }
+
+    public static void unLoginStatus(Context context) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences("login", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.remove("isLogin");
+        editor.apply();
     }
 }
