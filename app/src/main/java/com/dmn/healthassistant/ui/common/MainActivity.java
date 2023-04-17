@@ -14,6 +14,7 @@ import com.dmn.healthassistant.ui.diet.DietFragment;
 import com.dmn.healthassistant.ui.individuality.IndividualityLoginFragment;
 import com.dmn.healthassistant.ui.individuality.IndividualityUnloginFragment;
 import com.dmn.healthassistant.ui.sport.SportFragment;
+import com.dmn.healthassistant.util.LogUtil;
 import com.google.android.material.button.MaterialButton;
 
 public class MainActivity extends AppCompatActivity {
@@ -35,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     }
     //点人头，有未登录和已登录两个页面。如果已登录，跳转到已登录界面；如果未登录，跳转到未登录界面
     public void onClick_individuality(View view) {
-        if (judgeLogin()) {
+        if (LogUtil.judgeLogin(MainActivity.this)) {
             replaceFragment(new IndividualityLoginFragment());
         } else {
             replaceFragment(new IndividualityUnloginFragment());
@@ -64,14 +65,6 @@ public class MainActivity extends AppCompatActivity {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.remove(fragment);
         fragmentTransaction.commit();
-    }
-
-    //获取登录状态，判断是否登录。
-    private boolean judgeLogin() {
-        SharedPreferences sharedPreferences = getSharedPreferences("login", MODE_PRIVATE);
-        boolean isLogin = sharedPreferences.getBoolean("isLogin", false);
-        System.out.println(isLogin);
-        return isLogin;
     }
 
 }

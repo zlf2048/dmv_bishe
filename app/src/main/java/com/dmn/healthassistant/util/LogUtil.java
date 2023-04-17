@@ -57,4 +57,12 @@ public class LogUtil {
         editor.remove("isLogin");
         editor.apply();
     }
+
+    //获取登录状态，判断是否登录。
+    public static boolean judgeLogin(Context context) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences("login", Context.MODE_PRIVATE);
+        boolean isLogin = sharedPreferences.getBoolean("isLogin", false);
+        System.out.println(isLogin);
+        return isLogin;
+    }
 }
