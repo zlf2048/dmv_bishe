@@ -13,6 +13,27 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.StudentHealth">
         <activity
+            android:name=".ui.information.journal.JournalAdapterActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".ui.information.NewsDetailActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".ui.information.article.ArticleAdapterActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".ui.individuality.personal.BasicInformationActivity"
             android:exported="false">
             <meta-data

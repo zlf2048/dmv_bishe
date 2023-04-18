@@ -27,6 +27,7 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/information"
+        android:onClick="onClick_information"
         style="@style/Widget.MaterialComponents.Button.TextButton"
         android:layout_width="0dp"
         android:layout_height="70dp"
