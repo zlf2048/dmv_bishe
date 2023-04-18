@@ -21,7 +21,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/personal_information" />
+        app:layout_constraintTop_toBottomOf="@+id/healthy_information" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/collection"
@@ -40,12 +40,12 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/personal_information"
+        android:id="@+id/basic_information"
         style="@style/Widget.MaterialComponents.Button.TextButton"
         android:layout_width="0dp"
         android:layout_height="62dp"
         android:paddingLeft="40dp"
-        android:text="@string/personal_information"
+        android:text="@string/basic_information"
         android:textSize="18sp"
         android:textAlignment="viewStart"
         app:icon="@drawable/personal_information"
@@ -54,6 +54,23 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/collection" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/healthy_information"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="0dp"
+        android:layout_height="62dp"
+        android:paddingLeft="40dp"
+        android:text="@string/healthy_information"
+        android:textSize="18sp"
+        android:textAlignment="viewStart"
+        app:icon="@drawable/healthy_information"
+        app:iconPadding="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/basic_information" />
+
 
     <View
         android:id="@+id/view"
@@ -66,7 +83,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/personal_information" />
+        app:layout_constraintTop_toBottomOf="@+id/healthy_information" />
 
     <View
         android:id="@+id/view2"
@@ -101,8 +118,19 @@
         android:text="@string/arrow"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/personal_information"
-        app:layout_constraintEnd_toEndOf="@+id/personal_information" />
+        app:layout_constraintBottom_toBottomOf="@+id/basic_information"
+        app:layout_constraintEnd_toEndOf="@+id/basic_information" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="16dp"
+        android:text="@string/arrow"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/healthy_information"
+        app:layout_constraintEnd_toEndOf="@+id/healthy_information" />
 
 
     <TextView

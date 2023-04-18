@@ -12,7 +12,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.StudentHealth">
-
+        <activity
+            android:name=".ui.individuality.personal.BasicInformationActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
         <activity
             android:name=".ui.sport.FitnessAchievement.AddActivity"
             android:exported="false">
@@ -35,7 +41,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".ui.individuality.personal.PersonalInformationActivity"
+            android:name=".ui.individuality.personal.HealthyInformationActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

@@ -6,11 +6,11 @@ import android.os.Bundle;
 
 import com.dmn.healthassistant.R;
 
-public class PersonalInformationActivity extends AppCompatActivity {
+public class HealthyInformationActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_personal_information);
+        setContentView(R.layout.activity_healthy_information);
     }
 }
