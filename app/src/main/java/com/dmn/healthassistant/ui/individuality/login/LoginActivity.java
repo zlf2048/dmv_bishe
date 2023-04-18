@@ -14,11 +14,13 @@ import android.widget.Toast;
 import com.dmn.healthassistant.R;
 import com.dmn.healthassistant.ui.common.MainActivity;
 import com.dmn.healthassistant.util.LogUtil;
+import com.dmn.healthassistant.util.LoginInfo;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.minapp.android.sdk.auth.Auth;
 import com.minapp.android.sdk.database.Record;
 import com.minapp.android.sdk.database.Table;
+import com.minapp.android.sdk.user.User;
 
 public class LoginActivity extends AppCompatActivity {
     private TextView register;
@@ -56,9 +58,14 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         try {
-                            Auth.signInByUsername(userNameText, accountPasswordText);
+                            User user;
+                            user = Auth.signInByUsername(userNameText, accountPasswordText);
                             //传递登录状态，表明已登录
                             LogUtil.loginStatus(LoginActivity.this);
+                            LoginInfo loginInfo = new LoginInfo(LoginActivity.this);
+                            loginInfo.saveLoginInfo(user);
+                            System.out.println(loginInfo.getLoginInfo().getUsername());
+                            loginInfo.deleteLoginInfo(loginInfo.getLoginInfo());
                             handler.post(new Runnable() {
                                 @Override
                                 public void run() {
