@@ -42,7 +42,7 @@ public class LoginInfo extends SQLiteOpenHelper {
         values.put(COLUMN_ID, user.getId());
         values.put(COLUMN_USERNAME, user.getUsername());
         db.insert(TABLE_NAME, null, values);
-//        db.close();
+        db.close();
     }
 
     public Userinfo getLoginInfo() {
@@ -52,7 +52,7 @@ public class LoginInfo extends SQLiteOpenHelper {
             @SuppressLint("Range") String username = cursor.getString(cursor.getColumnIndex(COLUMN_USERNAME));
             @SuppressLint("Range") String id = cursor.getString(cursor.getColumnIndex(COLUMN_ID));
             cursor.close();
-//            db.close();
+            db.close();
             return new Userinfo(username, id);
         } else {
             cursor.close();
@@ -66,6 +66,6 @@ public class LoginInfo extends SQLiteOpenHelper {
         String whereClause = COLUMN_ID + "=?";
         String[] whereArgs = new String[] {String.valueOf(userinfo.getId())};
         db.delete(TABLE_NAME, whereClause, whereArgs);
-//        db.close();
+        db.close();
     }
 }

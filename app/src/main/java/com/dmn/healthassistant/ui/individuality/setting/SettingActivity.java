@@ -14,6 +14,7 @@ import com.dmn.healthassistant.R;
 import com.dmn.healthassistant.ui.common.MainActivity;
 import com.dmn.healthassistant.ui.individuality.login.LoginActivity;
 import com.dmn.healthassistant.util.LogUtil;
+import com.dmn.healthassistant.util.LoginInfo;
 import com.minapp.android.sdk.auth.Auth;
 
 public class SettingActivity extends AppCompatActivity {
@@ -42,7 +43,10 @@ public class SettingActivity extends AppCompatActivity {
 
                 //传递登录状态，表明退出登录
                 LogUtil.unLoginStatus(SettingActivity.this);
-//                unLoginStatus();
+                //删除登录用户信息
+                LoginInfo loginInfo = new LoginInfo(SettingActivity.this);
+                loginInfo.deleteLoginInfo(loginInfo.getLoginInfo());
+                //提示退出登录
                 Toast.makeText(SettingActivity.this, "已退出登录", Toast.LENGTH_SHORT).show();
                 finish();
                 Intent intent = new Intent(SettingActivity.this, MainActivity.class);

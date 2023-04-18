@@ -62,10 +62,10 @@ public class LoginActivity extends AppCompatActivity {
                             user = Auth.signInByUsername(userNameText, accountPasswordText);
                             //传递登录状态，表明已登录
                             LogUtil.loginStatus(LoginActivity.this);
+                            //保存登录用户信息
                             LoginInfo loginInfo = new LoginInfo(LoginActivity.this);
                             loginInfo.saveLoginInfo(user);
-                            System.out.println(loginInfo.getLoginInfo().getUsername());
-                            loginInfo.deleteLoginInfo(loginInfo.getLoginInfo());
+                            //提示已退出登录
                             handler.post(new Runnable() {
                                 @Override
                                 public void run() {
