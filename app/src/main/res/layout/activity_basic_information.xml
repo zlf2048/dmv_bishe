@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.individuality.personal.PersonalInformationActivity">
+    tools:context=".ui.individuality.personal.HealthyInformationActivity">
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:text="@string/personal_information"
+        android:text="@string/basic_information"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/blood_glucoseTextInputLayout"
+        android:id="@+id/phone_numberTextInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
@@ -34,22 +34,23 @@
         app:hintTextColor="@color/text_hint"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/blood_pressureTextInputLayout"
-        app:startIconDrawable="@drawable/blood_glucose">
+        app:layout_constraintTop_toBottomOf="@+id/mailboxTextInputLayout"
+        app:startIconDrawable="@drawable/phone_number">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/blood_glucose"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/blood_glucose"
+            android:hint="@string/phone_number"
             android:inputType="text"
             android:singleLine="true"
             android:textColorHint="@color/text_hint"
             android:textCursorDrawable="@drawable/input_cursor" />
     </com.google.android.material.textfield.TextInputLayout>
 
+
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/blood_pressureTextInputLayout"
+        android:id="@+id/mailboxTextInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
@@ -64,14 +65,14 @@
         app:hintTextColor="@color/text_hint"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/weightTextInputLayout"
-        app:startIconDrawable="@drawable/blood_pressure">
+        app:layout_constraintTop_toBottomOf="@+id/usernameTextInputLayout"
+        app:startIconDrawable="@drawable/mailbox">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/blood_pressure"
+            android:id="@+id/mailbox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/blood_pressure"
+            android:hint="@string/mailbox"
             android:inputType="text"
             android:singleLine="true"
             android:textColorHint="@color/text_hint"
@@ -79,7 +80,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/weightTextInputLayout"
+        android:id="@+id/usernameTextInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
@@ -94,14 +95,14 @@
         app:hintTextColor="@color/text_hint"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/heightTextInputLayout"
-        app:startIconDrawable="@drawable/weight">
+        app:layout_constraintTop_toBottomOf="@+id/cityTextInputLayout"
+        app:startIconDrawable="@drawable/username">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/weight"
+            android:id="@+id/username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/weight"
+            android:hint="@string/username"
             android:inputType="text"
             android:singleLine="true"
             android:textColorHint="@color/text_hint"
@@ -109,37 +110,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/heightTextInputLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="60dp"
-        android:textColorHint="@color/text_hint"
-        app:boxBackgroundColor="@color/white"
-        app:boxBackgroundMode="filled"
-        app:boxStrokeColor="@color/ripple_color"
-        app:boxStrokeWidth="2dp"
-        app:endIconTint="@color/ripple_color"
-        app:hintTextColor="@color/text_hint"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/birth_dataTextInputLayout"
-        app:startIconDrawable="@drawable/height">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/height"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/height"
-            android:inputType="text"
-            android:singleLine="true"
-            android:textColorHint="@color/text_hint"
-            android:textCursorDrawable="@drawable/input_cursor" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/birth_dataTextInputLayout"
+        android:id="@+id/cityTextInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
@@ -155,13 +126,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sexTextInputLayout"
-        app:startIconDrawable="@drawable/birth_data">
+        app:startIconDrawable="@drawable/city">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/birth_data"
+            android:id="@+id/city"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/birth_data"
+            android:hint="@string/city"
             android:inputType="text"
             android:singleLine="true"
             android:textColorHint="@color/text_hint"
@@ -184,7 +155,7 @@
         app:hintTextColor="@color/text_hint"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nameTextInputLayout"
+        app:layout_constraintTop_toBottomOf="@+id/nicknameTextInputLayout"
         app:startIconDrawable="@drawable/sex">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -198,8 +169,9 @@
             android:textCursorDrawable="@drawable/input_cursor" />
     </com.google.android.material.textfield.TextInputLayout>
 
+
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/nameTextInputLayout"
+        android:id="@+id/nicknameTextInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
@@ -218,10 +190,10 @@
         app:startIconDrawable="@drawable/name">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/name"
+            android:id="@+id/nickname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/name1"
+            android:hint="@string/nickname"
             android:inputType="text"
             android:singleLine="true"
             android:textColorHint="@color/text_hint"
@@ -242,7 +214,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/blood_glucoseTextInputLayout"
+        app:layout_constraintTop_toBottomOf="@+id/phone_numberTextInputLayout"
         tools:layout_editor_absoluteY="320dp" />
 
 
