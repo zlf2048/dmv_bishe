@@ -14,11 +14,12 @@ import com.dmn.healthassistant.R;
 import com.dmn.healthassistant.ui.information.article.ArticleAdapterActivity;
 import com.dmn.healthassistant.ui.information.journal.JournalAdapterActivity;
 import com.dmn.healthassistant.ui.sport.FitnessAchievement.FitnessAchievementActivity;
+import com.google.android.material.card.MaterialCardView;
 
 public class InformationFragment extends Fragment {
 
-    private Button article;
-    private Button journal;
+    private MaterialCardView article;
+    private MaterialCardView journal;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){

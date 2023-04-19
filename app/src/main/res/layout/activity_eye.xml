@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/deeppurple50">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="明亮护眼营养食谱"
+            android:textSize="25sp"
+            android:textStyle="bold"/>
+
+        <ImageView
+            android:layout_width="400dp"
+            android:layout_height="250dp"
+            android:layout_marginTop="10dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/eye1"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="start|left"
+            android:text="       长期伏案，眼部疲劳，视线模糊。除了要时不时离开桌子，眺望远方之外，充足的营养对于眼部健康也至关重要。试试照着食谱这样吃，为你的眼部健康提供充足的维生素A、维生素C等必需营养。"
+            android:textSize="18sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="0dp"
+            android:gravity="start|left"
+            android:text="早餐"
+            android:textColor="@color/bluegrey500"
+            android:textSize="18sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="start|left"
+            android:text="燕麦片； 猕猴桃； 牛奶； 蓝莓； 核桃干"
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="0dp"
+            android:gravity="start|left"
+            android:text="午餐"
+            android:textColor="@color/bluegrey500"
+            android:textSize="18sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="start|left"
+            android:text="南瓜饭； 番茄牛肉片； 胡萝卜炒木耳； 白菜豆腐汤； 柚子； 脱脂牛奶"
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="0dp"
+            android:gravity="start|left"
+            android:text="晚餐"
+            android:textColor="@color/bluegrey500"
+            android:textSize="18sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="start|left"
+            android:text="紫甘蓝炒青椒； 猪肝炒洋葱； 素炒荞麦面"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+
+</ScrollView>

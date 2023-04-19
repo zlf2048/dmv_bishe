@@ -8,6 +8,7 @@
     <string name="const_name">昵称：</string>
     <string name="const_id">ID:</string>
     <string name="login_click">点击登录</string>
+    <string name="article">文章</string>
     <string name="movement_today">今日运动</string>
     <string name="name">取个好听的昵称吧！</string>
     <string name="id">000001</string>
@@ -87,11 +88,8 @@
     <string name="version">版本</string>
     <string name="exit_current_account">退出当前账户</string>
     <string name="share">分享</string>
-    <string name="input_hint">我也说一句</string>
     <string name="all_reply">全部回复</string>
-    <string name="only_ts">只看楼主</string>
     <string name="need_title">请输入标题</string>
-    <string name="need_content">来吧，尽情发挥吧…</string>
     <string name="issue">发布</string>
     <string name="issue_reply">发表回复</string>
     <string name="everyday_sport">每日活动</string>
@@ -104,7 +102,7 @@
     <string name="sport_record">运动记录</string>
     <string name="minute">分钟</string>
     <string name="FitnessAchievement">健身成果</string>
-    <string name="body_weight_hint">添加健身成果，展示您的自信与魅力</string>
+    <string name="body_weight_hint">记录每一次改变，展示您的自信与魅力</string>
     <string name="kal">千卡</string>
     <string name="time">次</string>
     <string name="calendar">日历</string>

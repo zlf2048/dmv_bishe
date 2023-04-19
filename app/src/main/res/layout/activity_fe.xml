@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/deeppurple50">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="缺铁性贫血食谱"
+            android:textSize="25sp"
+            android:textStyle="bold"/>
+
+        <ImageView
+            android:layout_width="400dp"
+            android:layout_height="250dp"
+            android:layout_marginTop="10dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/fe1"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="start|left"
+            android:text="       缺铁性贫血可能与铁摄入不足，或者铁流失增加（例如女性经期）有关。缺铁性贫血的常见症状为头晕，无力，面色苍白等。缺铁性贫血的小伙伴们，日常需注意补充富含铁的食物（例如鱼类、动物肝脏）、富含维C的食物（例如新鲜蔬果）和蛋白质（肉、蛋、豆、奶类）。"
+            android:textSize="18sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="0dp"
+            android:gravity="start|left"
+            android:text="早餐"
+            android:textColor="@color/bluegrey500"
+            android:textSize="18sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="start|left"
+            android:text="小米粥； 荷包蛋(油煎)； 猪肉松； 苹果； 核桃干"
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="0dp"
+            android:gravity="start|left"
+            android:text="午餐"
+            android:textColor="@color/bluegrey500"
+            android:textSize="18sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="start|left"
+            android:text="糙米； 牛肉(精瘦）； 番茄； 猪肉(瘦)； 芹菜； 大白菜； 豆油； 猕猴桃； 酸奶(脱脂)"
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="0dp"
+            android:gravity="start|left"
+            android:text="晚餐"
+            android:textColor="@color/bluegrey500"
+            android:textSize="18sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="start|left"
+            android:text="杂粮馒头； 鲤鱼； 鸭血； 豆腐； 黄瓜； 豆油； 香梨"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+
+</ScrollView>
