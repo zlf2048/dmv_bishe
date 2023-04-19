@@ -29,6 +29,23 @@ public class IndividualityTopLoginFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        setText();
+
+//        topUnloginLayout.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(getActivity(), LoginActivity.class);
+//                startActivity(intent);
+//            }
+//        });
+    }
+    @Override
+    public void onResume() {
+        super.onResume();
+        setText();
+    }
+
+    public  void setText() {
         LoginInfo loginInfo = new LoginInfo(getActivity());
         String nicknameText = loginInfo.getLoginInfo().getNickname();
         String idText = loginInfo.getLoginInfo().getId();
@@ -38,12 +55,5 @@ public class IndividualityTopLoginFragment extends Fragment {
             textView.setText(nicknameText);
         }
         id.setText(idText);
-//        topUnloginLayout.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(getActivity(), LoginActivity.class);
-//                startActivity(intent);
-//            }
-//        });
     }
 }
