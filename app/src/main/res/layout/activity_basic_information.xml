@@ -125,7 +125,7 @@
         app:hintTextColor="@color/text_hint"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sexTextInputLayout"
+        app:layout_constraintTop_toBottomOf="@+id/nicknameTextInputLayout"
         app:startIconDrawable="@drawable/city">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -139,43 +139,13 @@
             android:textCursorDrawable="@drawable/input_cursor" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/sexTextInputLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="60dp"
-        android:textColorHint="@color/text_hint"
-        app:boxBackgroundColor="@color/white"
-        app:boxBackgroundMode="filled"
-        app:boxStrokeColor="@color/ripple_color"
-        app:boxStrokeWidth="2dp"
-        app:endIconTint="@color/ripple_color"
-        app:hintTextColor="@color/text_hint"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nicknameTextInputLayout"
-        app:startIconDrawable="@drawable/sex">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/sex"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/sex"
-            android:inputType="text"
-            android:singleLine="true"
-            android:textColorHint="@color/text_hint"
-            android:textCursorDrawable="@drawable/input_cursor" />
-    </com.google.android.material.textfield.TextInputLayout>
-
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/nicknameTextInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="5dp"
         android:layout_marginEnd="60dp"
         android:textColorHint="@color/text_hint"
         app:boxBackgroundColor="@color/white"
@@ -186,7 +156,7 @@
         app:hintTextColor="@color/text_hint"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/rg_1"
         app:startIconDrawable="@drawable/name">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -199,6 +169,7 @@
             android:textColorHint="@color/text_hint"
             android:textCursorDrawable="@drawable/input_cursor" />
     </com.google.android.material.textfield.TextInputLayout>
+
 
 
     <com.google.android.material.button.MaterialButton
@@ -217,6 +188,35 @@
         app:layout_constraintTop_toBottomOf="@+id/phone_numberTextInputLayout"
         tools:layout_editor_absoluteY="320dp" />
 
+    <RadioGroup
+        android:id="@+id/rg_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView">
+
+        <RadioButton
+            android:id="@+id/rb_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:text="男"
+            android:checked="true"
+            android:textColor="#616161"
+            android:textSize="20sp" />
+
+        <RadioButton
+            android:id="@+id/rb_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:text="女"
+            android:textColor="#616161"
+            android:textSize="20sp" />
+    </RadioGroup>
 
 
     <View
