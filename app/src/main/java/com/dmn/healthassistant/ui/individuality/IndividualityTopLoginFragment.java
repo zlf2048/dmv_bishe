@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
@@ -29,9 +30,13 @@ public class IndividualityTopLoginFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         LoginInfo loginInfo = new LoginInfo(getActivity());
-        String usernameText = loginInfo.getLoginInfo().getUsername();
+        String nicknameText = loginInfo.getLoginInfo().getNickname();
         String idText = loginInfo.getLoginInfo().getId();
-        textView.setText(usernameText);
+        if (nicknameText == null || nicknameText.isEmpty()) {
+            textView.setText("取个好听的名字吧！");
+        } else {
+            textView.setText(nicknameText);
+        }
         id.setText(idText);
 //        topUnloginLayout.setOnClickListener(new View.OnClickListener() {
 //            @Override

@@ -51,20 +51,22 @@ public class LoginInfo extends SQLiteOpenHelper {
         SQLiteDatabase db = getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(COLUMN_ID, user.getId());
+        values.put(COLUMN_NICKNAME, user.getNickname());
         values.put(COLUMN_USERNAME, user.getUsername());
         db.insert(TABLE_NAME, null, values);
-        db.close();
+//        db.close();
     }
 
     public Userinfo getLoginInfo() {
         SQLiteDatabase db = getReadableDatabase();
         Cursor cursor = db.query(TABLE_NAME, null, null, null, null, null, null);
         if (cursor.moveToFirst()) {
-            @SuppressLint("Range") String username = cursor.getString(cursor.getColumnIndex(COLUMN_USERNAME));
             @SuppressLint("Range") String id = cursor.getString(cursor.getColumnIndex(COLUMN_ID));
+            @SuppressLint("Range") String nickname = cursor.getString(cursor.getColumnIndex(COLUMN_NICKNAME));
+            @SuppressLint("Range") String username = cursor.getString(cursor.getColumnIndex(COLUMN_USERNAME));
             cursor.close();
             db.close();
-            return new Userinfo(id, username);
+            return new Userinfo(id, nickname,username);
         } else {
             cursor.close();
             db.close();
