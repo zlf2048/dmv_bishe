@@ -15,8 +15,14 @@ public class LoginInfo extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "healthassistant.db";
     private static final int DATABASE_VERSION = 1;
     private static final String TABLE_NAME = "loginInfo";
-    private static final String COLUMN_USERNAME = "username";
     private static final String COLUMN_ID = "id";
+
+    private static final String COLUMN_NICKNAME = "nickname";
+    private static final String COLUMN_GENDER = "gender";
+    private static final String COLUMN_CITY = "city";
+    private static final String COLUMN_USERNAME = "username";
+    private static final String COLUMN_EMAIL = "email";
+    private static final String COLUMN_PHONE = "phone";
 
     public LoginInfo(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -26,7 +32,12 @@ public class LoginInfo extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String createTableSql = "CREATE TABLE " + TABLE_NAME + " (" +
                 COLUMN_ID + " TEXT PRIMARY KEY," +
-                COLUMN_USERNAME + " TEXT" +
+                COLUMN_NICKNAME + " TEXT," +
+                COLUMN_GENDER + " INTEGER," +
+                COLUMN_CITY + " TEXT," +
+                COLUMN_USERNAME + " TEXT," +
+                COLUMN_EMAIL + " TEXT," +
+                COLUMN_PHONE + " TEXT" +
                 ")";
         db.execSQL(createTableSql);
     }
@@ -53,12 +64,22 @@ public class LoginInfo extends SQLiteOpenHelper {
             @SuppressLint("Range") String id = cursor.getString(cursor.getColumnIndex(COLUMN_ID));
             cursor.close();
             db.close();
-            return new Userinfo(username, id);
+            return new Userinfo(id, username);
         } else {
             cursor.close();
             db.close();
             return null;
         }
+    }
+
+    public void updateLoginInfo(Userinfo userinfo) {
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_NICKNAME, userinfo.getNickname());
+        String whereClause = COLUMN_ID + "=?";
+        String[] whereArgs = new String[] {String.valueOf(userinfo.getId())};
+        db.update(TABLE_NAME, values, whereClause, whereArgs);
+//        db.close();
     }
 
     public void deleteLoginInfo(Userinfo userinfo) {

@@ -89,21 +89,21 @@ public class LoginActivity extends AppCompatActivity {
         });
 
 //        测试数据库操作（CRUD）
-        new Thread(new Runnable(){
-                    @Override
-                    public void run() {
-
-                        Table product = new Table("product");//操作表“product"
-                        Record record = product.createRecord();//弄一个record对象，对应一条数据，比如表头是姓名年龄， xxy 21 就是一条数据
-                        record.put("name","张同学");
-                        try {
-                            record.save();
-                        }catch (Exception e){
-                            System.out.println("CRUD异常了");
-                            System.out.println(e);
-                        }
-                    }
-                }).start();
+//        new Thread(new Runnable(){
+//                    @Override
+//                    public void run() {
+//
+//                        Table product = new Table("product");//操作表“product"
+//                        Record record = product.createRecord();//弄一个record对象，对应一条数据，比如表头是姓名年龄， xxy 21 就是一条数据
+//                        record.put("name","张同学");
+//                        try {
+//                            record.save();
+//                        }catch (Exception e){
+//                            System.out.println("CRUD异常了");
+//                            System.out.println(e);
+//                        }
+//                    }
+//                }).start();
 
 //                if ((userNameText.equals("15295751665") && accountPasswordText.equals("123456"))) {
 //                    Toast.makeText(getApplicationContext(), "登录成功", Toast.LENGTH_SHORT).show();
