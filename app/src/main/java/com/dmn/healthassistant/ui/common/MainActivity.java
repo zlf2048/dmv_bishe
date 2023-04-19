@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        replaceFragment(new SportFragment()); //启动时默认Sport界面
+        replaceFragment(new InformationFragment()); //启动时默认InformationFragment界面
 
         LayoutInflater inflater = LayoutInflater.from(this);
         View mView = inflater.inflate(R.layout.fragment_bottom_nav,null);

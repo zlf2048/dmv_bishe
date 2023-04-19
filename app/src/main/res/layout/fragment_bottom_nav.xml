@@ -9,23 +9,6 @@
     tools:layout_editor_absoluteY="25dp">
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/sport"
-        android:onClick="onClick_sport"
-        style="@style/Widget.MaterialComponents.Button.TextButton"
-        android:layout_width="0dp"
-        android:layout_height="70dp"
-        android:drawableTop="@drawable/sport"
-        android:insetTop="0dp"
-        android:insetBottom="0dp"
-        android:text="@string/sport"
-        android:textAllCaps="false"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/guideline"
-        app:layout_constraintStart_toStartOf="parent"
-        app:rippleColor="@color/ripple_color" />
-
-    <com.google.android.material.button.MaterialButton
         android:id="@+id/information"
         android:onClick="onClick_information"
         style="@style/Widget.MaterialComponents.Button.TextButton"
@@ -35,6 +18,22 @@
         android:insetTop="0dp"
         android:insetBottom="0dp"
         android:text="@string/information"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintStart_toStartOf="parent"
+        app:rippleColor="@color/ripple_color" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/sport"
+        android:onClick="onClick_sport"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        android:drawableTop="@drawable/sport"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        android:text="@string/sport"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
@@ -54,8 +53,8 @@
         android:text="@string/diet"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/guideline4"
-        app:layout_constraintStart_toEndOf="@+id/information"
+        app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintStart_toEndOf="@+id/guideline2"
         app:rippleColor="@color/ripple_color" />
 
     <com.google.android.material.button.MaterialButton
@@ -72,7 +71,7 @@
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline4"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
         app:rippleColor="@color/ripple_color" />
 
     <androidx.constraintlayout.widget.Guideline
@@ -91,7 +90,7 @@
 
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline4"
+        android:id="@+id/guideline3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
