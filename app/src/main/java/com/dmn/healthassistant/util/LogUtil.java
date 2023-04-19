@@ -62,7 +62,6 @@ public class LogUtil {
     public static boolean judgeLogin(Context context) {
         SharedPreferences sharedPreferences = context.getSharedPreferences("login", Context.MODE_PRIVATE);
         boolean isLogin = sharedPreferences.getBoolean("isLogin", false);
-        System.out.println(isLogin);
         return isLogin;
     }
 }

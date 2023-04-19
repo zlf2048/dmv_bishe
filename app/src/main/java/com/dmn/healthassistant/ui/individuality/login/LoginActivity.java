@@ -1,5 +1,6 @@
 package com.dmn.healthassistant.ui.individuality.login;
 
+import android.content.Context;
 import android.content.Intent;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -36,6 +37,11 @@ public class LoginActivity extends AppCompatActivity {
         loginMaterialButton = findViewById(R.id.loginMaterialButton);
         userName = findViewById(R.id.userName);
         accountPassword = findViewById(R.id.accountPassword);
+        rememberPasswordCheckBox = findViewById(R.id.rememberPasswordCheckBox);
+
+        SharedPreferences sharedPreferences = getSharedPreferences("remember", MODE_PRIVATE);
+        userName.setText(sharedPreferences.getString("username",""));
+        accountPassword.setText(sharedPreferences.getString("password",""));
 
         //点击新用户注册，跳转到注册界面
         register.setOnClickListener(new View.OnClickListener() {
@@ -72,6 +78,8 @@ public class LoginActivity extends AppCompatActivity {
                                     Toast.makeText(getApplicationContext(), "登录成功", Toast.LENGTH_SHORT).show();
                                 }
                             });
+                            rememberPassword(rememberPasswordCheckBox.isChecked(), userNameText, accountPasswordText);
+                            //关闭登录页面，跳转到MainActivity
                             finish();
                             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                             startActivity(intent);
@@ -124,5 +132,18 @@ public class LoginActivity extends AppCompatActivity {
 //                startActivity(intent);
 //            }
 //        });
+    }
+    public void rememberPassword(Boolean isChecked, String username, String password) {
+        SharedPreferences sharedPreferences = getSharedPreferences("remember", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        if (isChecked) {
+            editor.putString("username", username);
+            editor.putString("password", password);
+            editor.apply();
+        } else {
+            editor.remove("username");
+            editor.remove("password");
+            editor.apply();
+        }
     }
 }
