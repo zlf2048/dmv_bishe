@@ -32,7 +32,7 @@ public class FitnessAchievementActivity extends AppCompatActivity implements Vie
     private TextView tv_add;
 
     private SharedPreferences sp;
-    private TextView tv_money,tv_types,tv_dates,tv_time;
+    private TextView tv_dates,tv_time;
     private List<Map<String, String>> list;
     private MyAdapter adapter;
     private SharedPreferences.Editor editor;
@@ -59,8 +59,8 @@ public class FitnessAchievementActivity extends AppCompatActivity implements Vie
                 this,
                 list,
                 R.layout.item_into,
-                new String[]{"types","money","dates","time"},
-                new int[]{R.id.tv_types,R.id.tv_money,R.id.tv_dates,R.id.tv_time}
+                new String[]{"dates","time"},
+                new int[]{R.id.tv_dates,R.id.tv_time}
         );
         lv.setAdapter(adapter);
 
@@ -129,8 +129,8 @@ public class FitnessAchievementActivity extends AppCompatActivity implements Vie
                 this,
                 list,
                 R.layout.item_into,
-                new String[]{"types","money","dates","time"},
-                new int[]{R.id.tv_types,R.id.tv_money,R.id.tv_dates,R.id.tv_time}
+                new String[]{"dates","time"},
+                new int[]{R.id.tv_dates,R.id.tv_time}
         );
         lv.setAdapter(adapter);
     }
@@ -144,13 +144,10 @@ public class FitnessAchievementActivity extends AppCompatActivity implements Vie
         @Override
         public View getView(final int position, View convertView, ViewGroup parent) {
             View v = super.getView(position, convertView, parent);
-            tv_types = v.findViewById(R.id.tv_types);
-            tv_money = v.findViewById(R.id.tv_money);
             tv_dates = v.findViewById(R.id.tv_dates);
             tv_time = v.findViewById(R.id.tv_time);
 
-            tv_types.setText(list.get(position).get("types"));
-            tv_money.setText("+"+list.get(position).get("money"));
+
             tv_dates.setText(list.get(position).get("dates"));
             tv_time.setText(list.get(position).get("time"));
             return v;

@@ -22,7 +22,6 @@ public class AlterActivity extends AppCompatActivity implements View.OnClickList
 
     private ImageView iv_back;
     private Button bt_submit;
-    private Spinner sp_types;
     private EditText et_money,et_dates,et_time;
     private String types, dates, money,time,id;
     private SharedPreferences sp;
@@ -43,29 +42,12 @@ public class AlterActivity extends AppCompatActivity implements View.OnClickList
         iv_back = findViewById(R.id.iv_back);
         bt_submit = findViewById(R.id.bt_submit);
         et_dates = findViewById(R.id.et_dates);
-        sp_types = findViewById(R.id.sp_types);
         et_money = findViewById(R.id.et_money);
         et_time = findViewById(R.id.et_time);
         iv_back.setOnClickListener(this);
         bt_submit.setOnClickListener(this);
         final String[] string = getData();
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, string);
-        sp_types.setAdapter(adapter);
-        for(int i = 0; i < string.length; i++){
-            if(string[i].equals(types)){
-                sp_types.setSelection(i,true);
-                break;
-            }
-        }
-        sp_types.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                types = string[position];
-            }
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-            }
-        });
 
         et_dates.setText(dates);
         et_time.setText(time);
