@@ -64,9 +64,10 @@ public class LoginInfo extends SQLiteOpenHelper {
             @SuppressLint("Range") String id = cursor.getString(cursor.getColumnIndex(COLUMN_ID));
             @SuppressLint("Range") String nickname = cursor.getString(cursor.getColumnIndex(COLUMN_NICKNAME));
             @SuppressLint("Range") String username = cursor.getString(cursor.getColumnIndex(COLUMN_USERNAME));
+            @SuppressLint("Range") Integer gender = cursor.getInt(cursor.getColumnIndex(COLUMN_GENDER));
             cursor.close();
             db.close();
-            return new Userinfo(id, nickname,username);
+            return new Userinfo(id, nickname, username, gender);
         } else {
             cursor.close();
             db.close();
@@ -78,6 +79,7 @@ public class LoginInfo extends SQLiteOpenHelper {
         SQLiteDatabase db = getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(COLUMN_NICKNAME, userinfo.getNickname());
+        values.put(COLUMN_GENDER, userinfo.getGender());
         String whereClause = COLUMN_ID + "=?";
         String[] whereArgs = new String[] {String.valueOf(userinfo.getId())};
         db.update(TABLE_NAME, values, whereClause, whereArgs);

@@ -70,9 +70,10 @@ public class Userinfo {
         this.username = username;
     }
 
-    public Userinfo(String id, String nickname, String username) {
+    public Userinfo(String id, String nickname, String username, Integer gender) {
         this.id = id;
         this.nickname = nickname;
         this.username = username;
+        this.gender = gender;
     }
 }
