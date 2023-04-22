@@ -70,10 +70,12 @@ public class Userinfo {
         this.username = username;
     }
 
-    public Userinfo(String id, String nickname, String username, Integer gender) {
+    public Userinfo(String id, String nickname, String username, Integer gender, String city, String email) {
         this.id = id;
         this.nickname = nickname;
         this.username = username;
         this.gender = gender;
+        this.city = city;
+        this.email = email;
     }
 }

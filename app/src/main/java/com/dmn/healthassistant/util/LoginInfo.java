@@ -54,6 +54,8 @@ public class LoginInfo extends SQLiteOpenHelper {
         values.put(COLUMN_NICKNAME, user.getNickname());
         values.put(COLUMN_USERNAME, user.getUsername());
         values.put(COLUMN_GENDER, user.getGender());
+        values.put(COLUMN_CITY, user.getCity());
+        values.put(COLUMN_EMAIL, user.getEmail());
         db.insert(TABLE_NAME, null, values);
 //        db.close();
     }
@@ -66,9 +68,11 @@ public class LoginInfo extends SQLiteOpenHelper {
             @SuppressLint("Range") String nickname = cursor.getString(cursor.getColumnIndex(COLUMN_NICKNAME));
             @SuppressLint("Range") String username = cursor.getString(cursor.getColumnIndex(COLUMN_USERNAME));
             @SuppressLint("Range") Integer gender = cursor.getInt(cursor.getColumnIndex(COLUMN_GENDER));
+            @SuppressLint("Range") String city = cursor.getString(cursor.getColumnIndex(COLUMN_CITY));
+            @SuppressLint("Range") String email = cursor.getString(cursor.getColumnIndex(COLUMN_EMAIL));
             cursor.close();
             db.close();
-            return new Userinfo(id, nickname, username, gender);
+            return new Userinfo(id, nickname, username, gender, city, email);
         } else {
             cursor.close();
             db.close();
@@ -81,6 +85,8 @@ public class LoginInfo extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(COLUMN_NICKNAME, userinfo.getNickname());
         values.put(COLUMN_GENDER, userinfo.getGender());
+        values.put(COLUMN_CITY, userinfo.getCity());
+        values.put(COLUMN_EMAIL, userinfo.getEmail());
         String whereClause = COLUMN_ID + "=?";
         String[] whereArgs = new String[] {String.valueOf(userinfo.getId())};
         db.update(TABLE_NAME, values, whereClause, whereArgs);

@@ -27,8 +27,8 @@ import com.minapp.android.sdk.database.Table;
 import com.minapp.android.sdk.user.User;
 
 public class BasicInformationActivity extends AppCompatActivity {
-    private TextInputEditText nickname, username, sex;
-    private String nicknameText, usernameText, sexText;
+    private TextInputEditText nickname, username, sex, city, email;
+    private String nicknameText, usernameText, sexText, cityText, emailText;
 
     private MaterialButton save;
 
@@ -42,6 +42,8 @@ public class BasicInformationActivity extends AppCompatActivity {
         username = findViewById(R.id.username);
         save = findViewById(R.id.saveMaterialButton);
         sex = findViewById(R.id.sex);
+        city = findViewById(R.id.city);
+        email = findViewById(R.id.email);
 
         //获取登录用户的ID(ID不在页面中显示）
         LoginInfo loginInfo = new LoginInfo(BasicInformationActivity.this);
@@ -51,10 +53,14 @@ public class BasicInformationActivity extends AppCompatActivity {
         nicknameText = loginInfo.getLoginInfo().getNickname();
         usernameText = loginInfo.getLoginInfo().getUsername();
         sexText = genderString(loginInfo.getLoginInfo().getGender());
+        cityText = loginInfo.getLoginInfo().getCity();
+        emailText = loginInfo.getLoginInfo().getEmail();
 
         username.setText(usernameText);
         nickname.setText(nicknameText);
         sex.setText(sexText);
+        city.setText(cityText);
+        email.setText(emailText);
 
         //设置性别选择器
         String[] sexArry = {"男","保密","女"};
@@ -80,9 +86,11 @@ public class BasicInformationActivity extends AppCompatActivity {
                 //获取各输入框的值
                 String nicknameInputText = nickname.getText().toString();
                 Integer sexInputText = genderCode(sex.getText().toString());
+                String cityInputText = city.getText().toString();
+                String emailInputText = email.getText().toString();
 
                 //存入到本地数据库
-                Userinfo userinfo = new Userinfo(id, nicknameInputText, usernameText, sexInputText);
+                Userinfo userinfo = new Userinfo(id, nicknameInputText, usernameText, sexInputText, cityInputText, emailInputText);
                 loginInfo.updateLoginInfo(userinfo);
 
                 //存到远程服务器
@@ -90,6 +98,8 @@ public class BasicInformationActivity extends AppCompatActivity {
                 Record record = userprofile.fetchWithoutData(id);
                 record.put("nickname",nicknameInputText);
                 record.put("gender", sexInputText);
+                record.put("city",cityInputText);
+                record.put("email",emailInputText);
 
                 final Handler handler = new Handler(Looper.getMainLooper());
                 new Thread(new Runnable() {
