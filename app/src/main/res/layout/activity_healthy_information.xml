@@ -23,7 +23,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="60dp"
         android:textColorHint="@color/text_hint"
         app:boxBackgroundColor="@color/white"
@@ -53,7 +53,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="60dp"
         android:textColorHint="@color/text_hint"
         app:boxBackgroundColor="@color/white"
@@ -76,6 +76,40 @@
             android:singleLine="true"
             android:textColorHint="@color/text_hint"
             android:textCursorDrawable="@drawable/input_cursor" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="血糖正常范围： 3.9~6.1mmol/L"
+            android:textColor="@color/text_hint"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/blood_glucose1TextInputLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="260dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="60dp"
+        android:textColorHint="@color/text_hint"
+        app:boxBackgroundColor="@color/white"
+        app:boxBackgroundMode="filled"
+        app:boxStrokeColor="@color/ripple_color"
+        app:boxStrokeWidth="2dp"
+        app:endIconTint="@color/ripple_color"
+        app:hintTextColor="@color/text_hint"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/blood_glucoseTextInputLayout"
+        app:layout_constraintTop_toBottomOf="@+id/blood_pressureTextInputLayout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/blood_glucose1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/blood_glucose1"
+            android:inputType="text"
+            android:singleLine="true"
+            android:textColorHint="@color/text_hint"
+            android:textCursorDrawable="@drawable/input_cursor" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -84,7 +118,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="60dp"
+        android:layout_marginEnd="100dp"
         android:textColorHint="@color/text_hint"
         app:boxBackgroundColor="@color/white"
         app:boxBackgroundMode="filled"
@@ -102,6 +136,40 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/blood_pressure"
+            android:inputType="text"
+            android:singleLine="true"
+            android:textColorHint="@color/text_hint"
+            android:textCursorDrawable="@drawable/input_cursor" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="血压正常范围： 90~139/60~89mmHg"
+            android:textColor="@color/text_hint"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/blood_pressure1TextInputLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="260dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="60dp"
+        android:textColorHint="@color/text_hint"
+        app:boxBackgroundColor="@color/white"
+        app:boxBackgroundMode="filled"
+        app:boxStrokeColor="@color/ripple_color"
+        app:boxStrokeWidth="2dp"
+        app:endIconTint="@color/ripple_color"
+        app:hintTextColor="@color/text_hint"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/blood_pressureTextInputLayout"
+        app:layout_constraintTop_toBottomOf="@+id/weightTextInputLayout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/blood_pressure1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/blood_pressure1"
             android:inputType="text"
             android:singleLine="true"
             android:textColorHint="@color/text_hint"
@@ -139,6 +207,35 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/weight1TextInputLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="260dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="60dp"
+        android:textColorHint="@color/text_hint"
+        app:boxBackgroundColor="@color/white"
+        app:boxBackgroundMode="filled"
+        app:boxStrokeColor="@color/ripple_color"
+        app:boxStrokeWidth="2dp"
+        app:endIconTint="@color/ripple_color"
+        app:hintTextColor="@color/text_hint"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/weightTextInputLayout"
+        app:layout_constraintTop_toBottomOf="@+id/heightTextInputLayout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/weight1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/weight1"
+            android:inputType="text"
+            android:singleLine="true"
+            android:textColorHint="@color/text_hint"
+            android:textCursorDrawable="@drawable/input_cursor" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/heightTextInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -162,6 +259,35 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/height"
+            android:inputType="text"
+            android:singleLine="true"
+            android:textColorHint="@color/text_hint"
+            android:textCursorDrawable="@drawable/input_cursor" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/height1TextInputLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="260dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="60dp"
+        android:textColorHint="@color/text_hint"
+        app:boxBackgroundColor="@color/white"
+        app:boxBackgroundMode="filled"
+        app:boxStrokeColor="@color/ripple_color"
+        app:boxStrokeWidth="2dp"
+        app:endIconTint="@color/ripple_color"
+        app:hintTextColor="@color/text_hint"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/heightTextInputLayout"
+        app:layout_constraintTop_toBottomOf="@+id/birth_dataTextInputLayout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/height1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/height1"
             android:inputType="text"
             android:singleLine="true"
             android:textColorHint="@color/text_hint"

@@ -71,9 +71,13 @@
     <string name="mailbox">邮箱</string>
     <string name="birth_data">出生日期</string>
     <string name="height">身高</string>
+    <string name="height1">cm</string>
     <string name="weight">体重</string>
+    <string name="weight1">kg</string>
     <string name="blood_pressure">血压</string>
+    <string name="blood_pressure1">mmHg</string>
     <string name="blood_glucose">血糖</string>
+    <string name="blood_glucose1">mmol/L</string>
     <string name="student_number">学号</string>
     <string name="input_student_number">输入学号</string>
     <string name="input_real_name">输入真实姓名</string>
