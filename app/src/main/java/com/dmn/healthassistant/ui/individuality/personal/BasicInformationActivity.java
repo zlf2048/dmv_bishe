@@ -22,6 +22,7 @@ import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.MaterialAutoCompleteTextView;
 import com.google.android.material.textfield.TextInputEditText;
 import com.minapp.android.sdk.auth.Auth;
+import com.minapp.android.sdk.auth.model.UpdateUserReq;
 import com.minapp.android.sdk.database.Record;
 import com.minapp.android.sdk.database.Table;
 import com.minapp.android.sdk.user.User;
@@ -99,7 +100,6 @@ public class BasicInformationActivity extends AppCompatActivity {
                 record.put("nickname",nicknameInputText);
                 record.put("gender", sexInputText);
                 record.put("city",cityInputText);
-                record.put("email",emailInputText);
 
                 final Handler handler = new Handler(Looper.getMainLooper());
                 new Thread(new Runnable() {
@@ -107,6 +107,11 @@ public class BasicInformationActivity extends AppCompatActivity {
                     public void run() {
                         try {
                             record.save();
+                            //单独请求修改Email
+                            UpdateUserReq request = new UpdateUserReq();
+                            request.setEmail(emailInputText);
+                            Auth.currentUser().updateUser(request);
+
                             handler.post(new Runnable() {
                                 @Override
                                 public void run() {
