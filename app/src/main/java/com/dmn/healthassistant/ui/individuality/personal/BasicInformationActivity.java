@@ -73,7 +73,7 @@ public class BasicInformationActivity extends AppCompatActivity {
         });
 
 
-        //设设置保存按钮点击事件
+        //设置保存按钮点击事件
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -53,6 +53,7 @@ public class LoginInfo extends SQLiteOpenHelper {
         values.put(COLUMN_ID, user.getId());
         values.put(COLUMN_NICKNAME, user.getNickname());
         values.put(COLUMN_USERNAME, user.getUsername());
+        values.put(COLUMN_GENDER, user.getGender());
         db.insert(TABLE_NAME, null, values);
 //        db.close();
     }
