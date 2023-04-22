@@ -107,7 +107,7 @@ public class BasicInformationActivity extends AppCompatActivity {
                     public void run() {
                         try {
                             record.save();
-                            //单独请求修改Email
+                            //单独请求修改Email   妹大美女啦啦啦啦啦啦
                             UpdateUserReq request = new UpdateUserReq();
                             request.setEmail(emailInputText);
                             Auth.currentUser().updateUser(request);
