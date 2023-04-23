@@ -1,5 +1,6 @@
 package com.dmn.healthassistant.ui.common;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +9,8 @@ import android.view.ViewGroup;
 import androidx.fragment.app.Fragment;
 
 import com.dmn.healthassistant.R;
+import com.dmn.healthassistant.ui.information.article.ArticleAdapterActivity;
+import com.google.android.material.button.MaterialButton;
 
 public class BottomFragment extends Fragment {
 

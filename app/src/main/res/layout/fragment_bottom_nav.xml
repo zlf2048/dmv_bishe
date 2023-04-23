@@ -22,7 +22,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintStart_toStartOf="parent"
-        app:rippleColor="@color/ripple_color" />
+        app:rippleColor="@color/ripple_color"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/sport"
@@ -63,7 +63,7 @@
         style="@style/Widget.MaterialComponents.Button.TextButton"
         android:layout_width="0dp"
         android:layout_height="70dp"
-        android:drawableTop="@drawable/individuality"
+        android:drawableTop="@drawable/mine"
         android:insetTop="0dp"
         android:insetBottom="0dp"
         android:text="@string/individuality"
