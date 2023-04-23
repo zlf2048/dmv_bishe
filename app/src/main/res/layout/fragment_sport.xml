@@ -4,7 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/lightblue50">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -46,13 +47,13 @@
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/yundong"
+                            android:src="@drawable/foot"
                             android:layout_marginStart="15dp" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/everyday_sport"
+                            android:text="@string/step_number"
                             android:textSize="22sp"
                             android:layout_gravity="center_vertical"
                             android:layout_marginLeft="10dp" />
@@ -61,118 +62,29 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
-                            android:layout_marginLeft="200dp"
-                            android:text="@string/arrow"
-                            android:textSize="24sp"
-                            android:textStyle="bold" />
-
+                            android:layout_marginStart="75dp"
+                            android:text="12月4日 19:03"
+                            android:textSize="20sp"/>
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
                         android:orientation="horizontal">
 
-                        <TextView
-                            android:layout_width="75dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginLeft="15dp"
-                            android:gravity="center"
-                            android:text="@string/step_number"
-                            android:textSize="18sp" />
-
-                        <com.tanjiajun.widget.CircularArcProgressView
-                            android:layout_width="match_parent"
+                        <ImageView
+                            android:layout_width="40dp"
                             android:layout_height="40dp"
-                            android:layout_marginLeft="15dp"
-                            app:capv_background_color="@color/green50"
-                            app:capv_progress_color="@color/green300"
-                            app:capv_progress_text_color="@color/grey700"
-                            app:capv_percent="0.77"
-                            app:capv_is_show_progress_text="true" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
-                        android:orientation="horizontal">
+                            android:layout_margin="15dp"
+                            android:src="@drawable/walk" />
 
                         <TextView
-                            android:layout_width="75dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginLeft="15dp"
-                            android:gravity="center"
-                            android:text="@string/exercise_duration"
-                            android:textSize="18sp" />
-
-                        <com.tanjiajun.widget.CircularArcProgressView
-                            android:layout_width="match_parent"
-                            android:layout_height="40dp"
-                            android:layout_marginLeft="15dp"
-                            app:capv_background_color="@color/lightgreen100"
-                            app:capv_progress_color="@color/lightgreen500"
-                            app:capv_progress_text_color="@color/grey700"
-                            app:capv_percent="0.88"
-                            app:capv_is_show_progress_text="true" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="75dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginLeft="15dp"
-                            android:text="@string/energy_cost"
-                            android:gravity="center"
-                            android:textSize="18sp" />
-
-                        <com.tanjiajun.widget.CircularArcProgressView
-                            android:layout_width="match_parent"
-                            android:layout_height="40dp"
-                            android:layout_marginLeft="15dp"
-                            app:capv_background_color="@color/amber100"
-                            app:capv_progress_color="@color/amber600"
-                            app:capv_progress_text_color="@color/grey700"
-                            app:capv_percent="0.51"
-                            app:capv_is_show_progress_text="true" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="75dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginLeft="15dp"
-                            android:text="@string/sport_time"
-                            android:gravity="center"
-                            android:textSize="18sp" />
-
-                        <com.tanjiajun.widget.CircularArcProgressView
-                            android:layout_width="match_parent"
-                            android:layout_height="40dp"
-                            android:layout_marginLeft="15dp"
-                            app:capv_background_color="@color/lightblue50"
-                            app:capv_progress_color="@color/lightblue400"
-                            app:capv_progress_text_color="@color/grey700"
-                            app:capv_percent="0.77"
-                            app:capv_is_show_progress_text="true" />
+                            android:text="健走0.80公里"
+                            android:textStyle="bold"
+                            android:textSize="30sp"
+                            android:layout_gravity="center_vertical" />
 
                     </LinearLayout>
 
