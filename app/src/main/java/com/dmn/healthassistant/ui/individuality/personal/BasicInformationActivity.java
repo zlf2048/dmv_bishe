@@ -51,6 +51,19 @@ public class BasicInformationActivity extends AppCompatActivity {
         String id = loginInfo.getLoginInfo().getId();
 
         //获取并显示已有的个人信息
+        Table userprofile = new Table("_userprofile");
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    User user = Auth.currentUser();
+                    Userinfo userinfo = new Userinfo(user.getId(), user.getNickname(), user.getUsername(), user.getGender(), user.getCity(), user.getEmail());
+                    loginInfo.updateLoginInfo(userinfo);
+                } catch (Exception e) {
+                    System.out.println(e);
+                }
+            }
+        }).start();
         nicknameText = loginInfo.getLoginInfo().getNickname();
         usernameText = loginInfo.getLoginInfo().getUsername();
         sexText = genderString(loginInfo.getLoginInfo().getGender());
@@ -95,7 +108,6 @@ public class BasicInformationActivity extends AppCompatActivity {
                 loginInfo.updateLoginInfo(userinfo);
 
                 //存到远程服务器
-                Table userprofile = new Table("_userprofile");
                 Record record = userprofile.fetchWithoutData(id);
                 record.put("nickname",nicknameInputText);
                 record.put("gender", sexInputText);

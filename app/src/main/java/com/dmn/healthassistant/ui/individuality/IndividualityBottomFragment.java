@@ -14,10 +14,6 @@ import com.dmn.healthassistant.ui.individuality.personal.HealthyInformationActiv
 import com.dmn.healthassistant.ui.individuality.setting.SettingActivity;
 import com.dmn.healthassistant.util.LogUtil;
 import com.google.android.material.button.MaterialButton;
-//import com.dmn.healthassistant.ui.individuality.settings.SettingActivity;
-//import com.dmn.healthassistant.ui.individuality.mycollection.MyCollectionActivity;
-//import com.dmn.healthassistant.ui.individuality.myreply.ReplyActivity;
-//import com.dmn.healthassistant.ui.individuality.mytopic.MyTopicActivity;
 
 public class IndividualityBottomFragment extends Fragment {
 

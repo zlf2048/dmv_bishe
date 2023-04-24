@@ -69,7 +69,7 @@
     <string name="female">女</string>
     <string name="city">城市</string>
     <string name="mailbox">邮箱</string>
-    <string name="birth_data">出生日期</string>
+    <string name="birth_date">出生日期</string>
     <string name="height">身高</string>
     <string name="height1">cm</string>
     <string name="weight">体重</string>

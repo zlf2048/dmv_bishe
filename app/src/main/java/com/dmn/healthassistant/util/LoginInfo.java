@@ -98,6 +98,6 @@ public class LoginInfo extends SQLiteOpenHelper {
         String whereClause = COLUMN_ID + "=?";
         String[] whereArgs = new String[] {String.valueOf(userinfo.getId())};
         db.delete(TABLE_NAME, whereClause, whereArgs);
-        db.close();
+//        db.close();
     }
 }
