@@ -23,7 +23,7 @@ public class IndividualityTopLoginFragment extends Fragment {
         textView = view.findViewById(R.id.userName);
         id = view.findViewById(R.id.id);
         return view;
-    }
+    } //test
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
