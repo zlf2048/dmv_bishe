@@ -71,7 +71,7 @@ public class LoginActivity extends AppCompatActivity {
                             //保存登录用户信息
                             LoginInfo loginInfo = new LoginInfo(LoginActivity.this);
                             loginInfo.saveLoginInfo(user);
-                            //提示已退出登录
+                            //提示登录成功
                             handler.post(new Runnable() {
                                 @Override
                                 public void run() {

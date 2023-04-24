@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.text.*;
 import android.view.View;
 import android.widget.TextView;
@@ -13,9 +15,11 @@ import android.widget.Toast;
 import com.dmn.healthassistant.R;
 import com.dmn.healthassistant.ui.common.MainActivity;
 import com.dmn.healthassistant.util.LogUtil;
+import com.dmn.healthassistant.util.LoginInfo;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.*;
 import com.minapp.android.sdk.auth.Auth;
+import com.minapp.android.sdk.user.User;
 
 public class RegisterActivity extends AppCompatActivity {
     private TextInputEditText registerUserEditText,  registerPasswordEditText;
@@ -80,13 +84,6 @@ public class RegisterActivity extends AppCompatActivity {
 //            public void afterTextChanged(Editable s) {}
 //        });
 
-        registerMaterialButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // 这里实现注册逻辑
-            }
-        });
-
 //        getVerificationCodeMaterialButton.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
@@ -126,26 +123,38 @@ public class RegisterActivity extends AppCompatActivity {
                 String usernameText = registerUserEditText.getText().toString();
                 String passwordText = registerPasswordEditText.getText().toString();
 
+                final Handler handler = new Handler(Looper.getMainLooper());
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
                         try {
-                            //Auth.signInByUsername(userNameText, accountPasswordText);
-                            Auth.signUpByUsername(usernameText, passwordText);
+                            User user = Auth.signUpByUsername(usernameText, passwordText);
+                            //传递登录状态，表明已登录
+                            LogUtil.loginStatus(RegisterActivity.this);
+                            //保存注册用户信息
+                            LoginInfo loginInfo = new LoginInfo(RegisterActivity.this);
+                            loginInfo.saveLoginInfo(user);
+
+                            handler.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Toast.makeText(getApplicationContext(), "注册成功", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                            finish();
+                            Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+                            startActivity(intent);
                         } catch (Exception e) {
                             System.out.println(e);
+                            handler.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Toast.makeText(getApplicationContext(), "注册失败，请重试", Toast.LENGTH_SHORT).show();
+                                }
+                            });
                         }
                     }
                 }).start();
-
-
-                //传递登录状态，表明已登录
-                LogUtil.loginStatus(RegisterActivity.this);
-//                loginStatus();
-                Toast.makeText(getApplicationContext(), "注册成功", Toast.LENGTH_SHORT).show();
-                finish();
-                Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
-                startActivity(intent);
             }
         });
 

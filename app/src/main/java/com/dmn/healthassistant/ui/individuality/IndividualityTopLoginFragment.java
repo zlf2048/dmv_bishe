@@ -11,6 +11,7 @@ import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 
 import com.dmn.healthassistant.R;
+import com.dmn.healthassistant.model.Userinfo;
 import com.dmn.healthassistant.ui.individuality.login.LoginActivity;
 import com.dmn.healthassistant.util.LoginInfo;
 
@@ -47,13 +48,18 @@ public class IndividualityTopLoginFragment extends Fragment {
 
     public  void setText() {
         LoginInfo loginInfo = new LoginInfo(getActivity());
-        String nicknameText = loginInfo.getLoginInfo().getNickname();
-        String idText = loginInfo.getLoginInfo().getId();
-        if (nicknameText == null || nicknameText.isEmpty()) {
-            textView.setText("取个好听的名字吧！");
+        Userinfo userinfo = loginInfo.getLoginInfo();
+        if (userinfo != null) {
+            String nicknameText = userinfo.getNickname();
+            String idText = loginInfo.getLoginInfo().getId();
+            if (nicknameText == null || nicknameText.isEmpty()) {
+                textView.setText("取个好听的名字吧！");
+            } else {
+                textView.setText(nicknameText);
+            }
+            id.setText(idText);
         } else {
-            textView.setText(nicknameText);
+            textView.setText("取个好听的名字吧！");
         }
-        id.setText(idText);
     }
 }
