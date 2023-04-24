@@ -10,7 +10,7 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="30dp"
         android:text="@string/healthy_information"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -79,7 +79,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="血糖正常范围： 3.9~6.1mmol/L"
+            android:text="血糖正常范围:3.9-6.1mmol/L"
             android:textColor="@color/text_hint"/>
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -133,18 +133,19 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/blood_pressure"
-            android:layout_width="match_parent"
+            android:layout_width="298dp"
             android:layout_height="wrap_content"
             android:hint="@string/blood_pressure"
             android:inputType="text"
             android:singleLine="true"
             android:textColorHint="@color/text_hint"
             android:textCursorDrawable="@drawable/input_cursor" />
+
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="血压正常范围： 90~139/60~89mmHg"
-            android:textColor="@color/text_hint"/>
+            android:layout_height="wrap_content"
+            android:text="血压正常范围:90-139/60-89mmHg"
+            android:textColor="@color/text_hint" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -332,7 +333,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="60dp"
         android:textColorHint="@color/text_hint"
         app:boxBackgroundColor="@color/white"
@@ -363,7 +364,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="0dp"
         android:layout_marginEnd="60dp"
         android:backgroundTint="@color/ripple_color"
         android:text="@string/save"
@@ -379,7 +380,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="0dp"
         android:layout_marginEnd="60dp"
         android:backgroundTint="@color/ripple_color"
         android:text="@string/save"
@@ -389,8 +390,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/BMITextInputLayout"
         tools:layout_editor_absoluteY="320dp" />
-
-
 
     <View
         android:id="@+id/view3"
