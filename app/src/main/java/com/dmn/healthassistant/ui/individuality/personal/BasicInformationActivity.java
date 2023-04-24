@@ -132,6 +132,7 @@ public class BasicInformationActivity extends AppCompatActivity {
                             });
                             finish();
                         } catch (Exception e) {
+                            System.out.println(e);
                             handler.post(new Runnable() {
                                 @Override
                                 public void run() {
