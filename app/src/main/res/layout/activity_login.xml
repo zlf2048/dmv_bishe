@@ -131,7 +131,7 @@
         android:id="@+id/register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="168dp"
+        android:layout_marginStart="145dp"
         android:layout_marginTop="24dp"
         android:text="@string/register"
         android:textColor="@color/blue600"
