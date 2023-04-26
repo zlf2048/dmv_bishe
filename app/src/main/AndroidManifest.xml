@@ -4,6 +4,13 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <uses-feature android:name="android.hardware.sensor.accelerometer" />
+
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.ACTIVITY_RECOGNITION" />
+
     <application
         android:name=".HealthAssistantApplication"
         android:allowBackup="true"
@@ -129,6 +136,8 @@
         <activity android:name=".ui.individuality.login.LoginActivity" />
         <activity android:name=".ui.individuality.login.RegisterActivity" />
         <activity android:name=".ui.common.MainActivity" />
+
+        <service android:name=".service.StepService" />
     </application>
 
 </manifest>
