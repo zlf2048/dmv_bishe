@@ -51,29 +51,19 @@
 
                 <TextView
                     android:textColor="@color/black"
-                    android:text="体重："
+                    android:text="时间："
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    />
+                    android:textSize="20sp" />
 
                 <EditText
                     android:padding="5dp"
                     android:background="@drawable/edittext_shape"
-                    android:inputType="numberDecimal"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
                     android:textSize="20sp"
                     android:layout_weight="1"
                     android:id="@+id/et_money" />
-
-                <TextView
-                    android:layout_marginLeft="10dp"
-                    android:text="kg"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    />
             </TableRow>
 
 
@@ -86,11 +76,10 @@
 
                 <TextView
                     android:textColor="@color/black"
-                    android:text="日期："
+                    android:text="成就："
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    />
+                    android:textSize="20sp" />
 
                 <EditText
                     android:padding="5dp"
@@ -111,11 +100,10 @@
 
                 <TextView
                     android:textColor="@color/black"
-                    android:text="时间："
+                    android:text="日期："
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    />
+                    android:textSize="20sp" />
 
                 <EditText
                     android:padding="5dp"
