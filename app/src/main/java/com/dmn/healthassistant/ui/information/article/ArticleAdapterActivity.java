@@ -4,7 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.webkit.ConsoleMessage;
+import android.webkit.WebChromeClient;
+import android.webkit.WebResourceError;
+import android.webkit.WebResourceRequest;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -13,6 +20,8 @@ import com.dmn.healthassistant.R;
 import com.dmn.healthassistant.ui.information.NewsDetailActivity;
 import com.dmn.healthassistant.ui.information.adapter.MyAdapter;
 import com.dmn.healthassistant.ui.information.bean.ItemBean;
+import com.minapp.android.sdk.database.Record;
+import com.minapp.android.sdk.database.Table;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +40,28 @@ public class ArticleAdapterActivity extends AppCompatActivity {
         initView();
         initData();
         initEvent();
+
+//        Table article = new Table("article");
+//        new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                try {
+//                    Record record = article.fetchRecord("644e83326d7f8c413ec0ebdc");
+//                    String content = record.getString("content");
+//
+//                    runOnUiThread(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            WebView webView = new WebView(ArticleAdapterActivity.this);
+//                            setContentView(webView);
+//                            webView.loadDataWithBaseURL(null, content, "text/html", "UTF-8", null);
+//                        }
+//                    });
+//                } catch (Exception e) {
+//                    System.out.println(e);
+//                }
+//            }
+//        }).start();
     }
 
     private void initEvent(){

@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -47,12 +48,19 @@ public class MyAdapter extends BaseAdapter {
         ImageView imageView = v.findViewById(R.id.iv_img);
         TextView tvTitle = v.findViewById(R.id.tv_title);
         TextView tvContent = v.findViewById(R.id.tv_content);
+        Button favoriteButton = v.findViewById(R.id.btn_favorite);
 
         //为控件填充数据
         ItemBean itemBean = mBeanList.get(i);
         imageView.setImageResource(itemBean.getImgResId());
         tvTitle.setText(itemBean.getTitle());
         tvContent.setText(itemBean.getContent());
+        favoriteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                System.out.println(i + "收藏了！");
+            }
+        });
 
         return v;
     }

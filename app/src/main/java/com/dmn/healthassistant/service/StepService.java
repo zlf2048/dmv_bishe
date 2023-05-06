@@ -51,20 +51,6 @@ public class StepService extends Service implements SensorEventListener {
         else{
             Log.e(TAG,"no step Detector sensor found");
         }
-        // 启动一个线程来打印"Hello World"
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                while (isRunning) {
-                    System.out.println("Hello World");
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        }).start();
         return super.onStartCommand(intent, flags, startId);
     }
 
