@@ -3,6 +3,8 @@ package com.dmn.healthassistant.ui.information.article;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -22,7 +24,14 @@ import com.dmn.healthassistant.ui.information.adapter.MyAdapter;
 import com.dmn.healthassistant.ui.information.bean.ItemBean;
 import com.minapp.android.sdk.database.Record;
 import com.minapp.android.sdk.database.Table;
+import com.minapp.android.sdk.database.query.Query;
+import com.minapp.android.sdk.util.PagedList;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -88,79 +97,73 @@ public class ArticleAdapterActivity extends AppCompatActivity {
     }
 
     private void initData(){
+        Table article = new Table("article");
+        Record[] record = new Record[20];
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Query query = new Query().offset(0).limit(20);
+                    PagedList<Record> records = article.query(query);
+                    List<Record> list = records.getObjects();
+
+                    int size = list.size();
+                    for (int i = 0; i < size; i++) {
+                        record[i] = list.get(i);
+                    }
+
+                } catch (Exception e) {
+                    System.out.println(e);
+                }
+            }
+        });
+        thread.start();
+
+        try {
+            thread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         mBeanList = new ArrayList<>();
 
-        ItemBean newsBean1 = new ItemBean();
-        newsBean1.setTitle("雨中漫步");
-        newsBean1.setContent("人生到处知何似，应似飞鸿踏雪泥。人的一生，辗转各处，像什么呢？正像到处飞的鸟类。到处飞是鸟的命运，是必然，偶尔在雪地上留下脚印，是偶然。");
-        newsBean1.setImgResId(R.drawable.test1);
+        for (int i = 0; i < record.length && record[i] != null; i++) {
+            Record record1 = record[i];
 
-        ItemBean newsBean2 = new ItemBean();
-        newsBean2.setTitle("林间穿梭");
-        newsBean2.setContent("人生到处知何似，应似飞鸿踏雪泥。人的一生，辗转各处，像什么呢？正像到处飞的鸟类。到处飞是鸟的命运，是必然，偶尔在雪地上留下脚印，是偶然。");
-        newsBean2.setImgResId(R.drawable.test2);
+            ItemBean newsBean = new ItemBean();
+            newsBean.setTitle(record1.getString("title"));
+            newsBean.setContent(record1.getString("abstract"));
 
-        ItemBean newsBean3 = new ItemBean();
-        newsBean3.setTitle("旅行花海");
-        newsBean3.setContent("人生到处知何似，应似飞鸿踏雪泥。人的一生，辗转各处，像什么呢？正像到处飞的鸟类。到处飞是鸟的命运，是必然，偶尔在雪地上留下脚印，是偶然。");
-        newsBean3.setImgResId(R.drawable.test3);
+            Thread thread1 = new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    Bitmap bitmap = null;
+                    try {
+                        URL url = new URL(record1.getString("img"));
+                        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                        connection.setDoInput(true);
+                        connection.connect();
+                        InputStream input = connection.getInputStream();
+                        bitmap = BitmapFactory.decodeStream(input);
+                    } catch (MalformedURLException e) {
+                        throw new RuntimeException(e);
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
 
-        ItemBean newsBean4 = new ItemBean();
-        newsBean4.setTitle("非平衡的线");
-        newsBean4.setContent("人生到处知何似，应似飞鸿踏雪泥。人的一生，辗转各处，像什么呢？正像到处飞的鸟类。到处飞是鸟的命运，是必然，偶尔在雪地上留下脚印，是偶然。");
-        newsBean4.setImgResId(R.drawable.test4);
+                    newsBean.setImgBitmap(bitmap);
+                }
+            });
+            thread1.start();
 
-        ItemBean newsBean5 = new ItemBean();
-        newsBean5.setTitle("坐看云起时");
-        newsBean5.setContent("人生到处知何似，应似飞鸿踏雪泥。人的一生，辗转各处，像什么呢？正像到处飞的鸟类。到处飞是鸟的命运，是必然，偶尔在雪地上留下脚印，是偶然。");
-        newsBean5.setImgResId(R.drawable.test5);
+            try {
+                thread1.join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
 
-        ItemBean newsBean6 = new ItemBean();
-        newsBean6.setTitle("美好的记忆");
-        newsBean6.setContent("人生到处知何似，应似飞鸿踏雪泥。人的一生，辗转各处，像什么呢？正像到处飞的鸟类。到处飞是鸟的命运，是必然，偶尔在雪地上留下脚印，是偶然。");
-        newsBean6.setImgResId(R.drawable.test6);
-
-        ItemBean newsBean7 = new ItemBean();
-        newsBean7.setTitle("久违的感动");
-        newsBean7.setContent("人生到处知何似，应似飞鸿踏雪泥。人的一生，辗转各处，像什么呢？正像到处飞的鸟类。到处飞是鸟的命运，是必然，偶尔在雪地上留下脚印，是偶然。");
-        newsBean7.setImgResId(R.drawable.test7);
-
-        ItemBean newsBean8 = new ItemBean();
-        newsBean8.setTitle("流浪日记");
-        newsBean8.setContent("人生到处知何似，应似飞鸿踏雪泥。人的一生，辗转各处，像什么呢？正像到处飞的鸟类。到处飞是鸟的命运，是必然，偶尔在雪地上留下脚印，是偶然。");
-        newsBean8.setImgResId(R.drawable.test8);
-
-        ItemBean newsBean9 = new ItemBean();
-        newsBean9.setTitle("山的尽头");
-        newsBean9.setContent("人生到处知何似，应似飞鸿踏雪泥。人的一生，辗转各处，像什么呢？正像到处飞的鸟类。到处飞是鸟的命运，是必然，偶尔在雪地上留下脚印，是偶然。");
-        newsBean9.setImgResId(R.drawable.test9);
-
-        ItemBean newsBean10 = new ItemBean();
-        newsBean10.setTitle("行到水穷处");
-        newsBean10.setContent("人生到处知何似，应似飞鸿踏雪泥。人的一生，辗转各处，像什么呢？正像到处飞的鸟类。到处飞是鸟的命运，是必然，偶尔在雪地上留下脚印，是偶然。");
-        newsBean10.setImgResId(R.drawable.test10);
-
-
-        mBeanList.add(newsBean1);
-        mBeanList.add(newsBean2);
-        mBeanList.add(newsBean3);
-        mBeanList.add(newsBean4);
-        mBeanList.add(newsBean5);
-        mBeanList.add(newsBean6);
-        mBeanList.add(newsBean7);
-        mBeanList.add(newsBean8);
-        mBeanList.add(newsBean9);
-        mBeanList.add(newsBean10);
-        mBeanList.add(newsBean1);
-        mBeanList.add(newsBean2);
-        mBeanList.add(newsBean3);
-        mBeanList.add(newsBean4);
-        mBeanList.add(newsBean5);
-        mBeanList.add(newsBean6);
-        mBeanList.add(newsBean7);
-        mBeanList.add(newsBean8);
-        mBeanList.add(newsBean9);
-        mBeanList.add(newsBean10);
+            mBeanList.add(newsBean);
+        }
     }
 
     private void initView(){

@@ -63,74 +63,10 @@ public class JournalAdapterActivity extends AppCompatActivity {
         ItemBean newsBean1 = new ItemBean();
         newsBean1.setTitle("雨中漫步");
         newsBean1.setContent("人生到处知何似，应似飞鸿踏雪泥。人的一生，辗转各处，像什么呢？正像到处飞的鸟类。到处飞是鸟的命运，是必然，偶尔在雪地上留下脚印，是偶然。");
-        newsBean1.setImgResId(R.drawable.test1);
-
-        ItemBean newsBean2 = new ItemBean();
-        newsBean2.setTitle("林间穿梭");
-        newsBean2.setContent("人生到处知何似，应似飞鸿踏雪泥。人的一生，辗转各处，像什么呢？正像到处飞的鸟类。到处飞是鸟的命运，是必然，偶尔在雪地上留下脚印，是偶然。");
-        newsBean2.setImgResId(R.drawable.test2);
-
-        ItemBean newsBean3 = new ItemBean();
-        newsBean3.setTitle("旅行花海");
-        newsBean3.setContent("人生到处知何似，应似飞鸿踏雪泥。人的一生，辗转各处，像什么呢？正像到处飞的鸟类。到处飞是鸟的命运，是必然，偶尔在雪地上留下脚印，是偶然。");
-        newsBean3.setImgResId(R.drawable.test3);
-
-        ItemBean newsBean4 = new ItemBean();
-        newsBean4.setTitle("非平衡的线");
-        newsBean4.setContent("人生到处知何似，应似飞鸿踏雪泥。人的一生，辗转各处，像什么呢？正像到处飞的鸟类。到处飞是鸟的命运，是必然，偶尔在雪地上留下脚印，是偶然。");
-        newsBean4.setImgResId(R.drawable.test4);
-
-        ItemBean newsBean5 = new ItemBean();
-        newsBean5.setTitle("坐看云起时");
-        newsBean5.setContent("人生到处知何似，应似飞鸿踏雪泥。人的一生，辗转各处，像什么呢？正像到处飞的鸟类。到处飞是鸟的命运，是必然，偶尔在雪地上留下脚印，是偶然。");
-        newsBean5.setImgResId(R.drawable.test5);
-
-        ItemBean newsBean6 = new ItemBean();
-        newsBean6.setTitle("美好的记忆");
-        newsBean6.setContent("人生到处知何似，应似飞鸿踏雪泥。人的一生，辗转各处，像什么呢？正像到处飞的鸟类。到处飞是鸟的命运，是必然，偶尔在雪地上留下脚印，是偶然。");
-        newsBean6.setImgResId(R.drawable.test6);
-
-        ItemBean newsBean7 = new ItemBean();
-        newsBean7.setTitle("久违的感动");
-        newsBean7.setContent("人生到处知何似，应似飞鸿踏雪泥。人的一生，辗转各处，像什么呢？正像到处飞的鸟类。到处飞是鸟的命运，是必然，偶尔在雪地上留下脚印，是偶然。");
-        newsBean7.setImgResId(R.drawable.test7);
-
-        ItemBean newsBean8 = new ItemBean();
-        newsBean8.setTitle("流浪日记");
-        newsBean8.setContent("人生到处知何似，应似飞鸿踏雪泥。人的一生，辗转各处，像什么呢？正像到处飞的鸟类。到处飞是鸟的命运，是必然，偶尔在雪地上留下脚印，是偶然。");
-        newsBean8.setImgResId(R.drawable.test8);
-
-        ItemBean newsBean9 = new ItemBean();
-        newsBean9.setTitle("山的尽头");
-        newsBean9.setContent("人生到处知何似，应似飞鸿踏雪泥。人的一生，辗转各处，像什么呢？正像到处飞的鸟类。到处飞是鸟的命运，是必然，偶尔在雪地上留下脚印，是偶然。");
-        newsBean9.setImgResId(R.drawable.test9);
-
-        ItemBean newsBean10 = new ItemBean();
-        newsBean10.setTitle("行到水穷处");
-        newsBean10.setContent("人生到处知何似，应似飞鸿踏雪泥。人的一生，辗转各处，像什么呢？正像到处飞的鸟类。到处飞是鸟的命运，是必然，偶尔在雪地上留下脚印，是偶然。");
-        newsBean10.setImgResId(R.drawable.test10);
+//        newsBean1.setImgResId(R.drawable.test1);
 
 
         mBeanList.add(newsBean1);
-        mBeanList.add(newsBean2);
-        mBeanList.add(newsBean3);
-        mBeanList.add(newsBean4);
-        mBeanList.add(newsBean5);
-        mBeanList.add(newsBean6);
-        mBeanList.add(newsBean7);
-        mBeanList.add(newsBean8);
-        mBeanList.add(newsBean9);
-        mBeanList.add(newsBean10);
-        mBeanList.add(newsBean1);
-        mBeanList.add(newsBean2);
-        mBeanList.add(newsBean3);
-        mBeanList.add(newsBean4);
-        mBeanList.add(newsBean5);
-        mBeanList.add(newsBean6);
-        mBeanList.add(newsBean7);
-        mBeanList.add(newsBean8);
-        mBeanList.add(newsBean9);
-        mBeanList.add(newsBean10);
     }
 
     private void initView(){

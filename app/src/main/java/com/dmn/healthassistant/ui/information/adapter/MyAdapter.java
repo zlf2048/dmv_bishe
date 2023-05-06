@@ -52,7 +52,7 @@ public class MyAdapter extends BaseAdapter {
 
         //为控件填充数据
         ItemBean itemBean = mBeanList.get(i);
-        imageView.setImageResource(itemBean.getImgResId());
+        imageView.setImageBitmap(itemBean.getImgBitmap());
         tvTitle.setText(itemBean.getTitle());
         tvContent.setText(itemBean.getContent());
         favoriteButton.setOnClickListener(new View.OnClickListener() {

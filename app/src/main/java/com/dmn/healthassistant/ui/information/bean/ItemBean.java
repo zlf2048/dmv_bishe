@@ -1,12 +1,14 @@
 package com.dmn.healthassistant.ui.information.bean;
 
+import android.graphics.Bitmap;
+
 import java.io.Serializable;
 
 public class ItemBean implements Serializable {
 
     private String title;
     private String content;
-    private int imgResId;
+    private Bitmap imgBitmap;
 
 
     public String getTitle() {
@@ -25,12 +27,12 @@ public class ItemBean implements Serializable {
         this.content = content;
     }
 
-    public int getImgResId() {
-        return imgResId;
+    public Bitmap getImgBitmap() {
+        return imgBitmap;
     }
 
-    public void setImgResId(int imgResId) {
-        this.imgResId = imgResId;
+    public void setImgBitmap(Bitmap bitmap) {
+        this.imgBitmap = bitmap;
     }
 
     @Override
@@ -38,7 +40,7 @@ public class ItemBean implements Serializable {
         return "ItemBean{" +
                 "title='" + title + '\'' +
                 ", content='" + content + '\'' +
-                ", imgResId=" + imgResId +
+                ", imgBitmap=" + imgBitmap +
                 '}';
     }
 }

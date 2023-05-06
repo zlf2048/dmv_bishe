@@ -50,7 +50,7 @@ public class NewsDetailActivity extends AppCompatActivity {
         if (mNewsBean != null){
             mTvTitle.setText(mNewsBean.getTitle());
             mTvContent.setText(mNewsBean.getContent());
-            mIvImage.setImageResource(mNewsBean.getImgResId());
+            mIvImage.setImageBitmap(mNewsBean.getImgBitmap());
         }
     }
 
