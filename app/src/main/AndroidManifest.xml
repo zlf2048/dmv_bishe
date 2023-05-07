@@ -3,7 +3,6 @@
     package="com.dmn.healthassistant">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
     <uses-permission android:name="android.permission.VIBRATE" />
 
     <uses-feature android:name="android.hardware.sensor.accelerometer" />
@@ -19,6 +18,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.StudentHealth">
+        <activity
+            android:name=".ui.individuality.collection.CollectionActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
         <activity
             android:name=".ui.diet.menu.FeActivity"
             android:exported="false">

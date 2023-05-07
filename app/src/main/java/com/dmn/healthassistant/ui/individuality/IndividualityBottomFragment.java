@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import com.dmn.healthassistant.R;
+import com.dmn.healthassistant.ui.individuality.collection.CollectionActivity;
 import com.dmn.healthassistant.ui.individuality.personal.BasicInformationActivity;
 import com.dmn.healthassistant.ui.individuality.personal.HealthyInformationActivity;
 import com.dmn.healthassistant.ui.individuality.setting.SettingActivity;
@@ -72,6 +73,14 @@ public class IndividualityBottomFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), SettingActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        collection.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), CollectionActivity.class);
                 startActivity(intent);
             }
         });
