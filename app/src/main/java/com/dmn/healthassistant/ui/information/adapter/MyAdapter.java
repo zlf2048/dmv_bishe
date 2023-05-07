@@ -48,17 +48,18 @@ public class MyAdapter extends BaseAdapter {
         ImageView imageView = v.findViewById(R.id.iv_img);
         TextView tvTitle = v.findViewById(R.id.tv_title);
         TextView tvContent = v.findViewById(R.id.tv_content);
-        Button favoriteButton = v.findViewById(R.id.btn_favorite);
+        ImageView favoriteImageView = v.findViewById(R.id.iv_favorite);
 
         //为控件填充数据
         ItemBean itemBean = mBeanList.get(i);
         imageView.setImageBitmap(itemBean.getImgBitmap());
         tvTitle.setText(itemBean.getTitle());
         tvContent.setText(itemBean.getContent());
-        favoriteButton.setOnClickListener(new View.OnClickListener() {
+
+        favoriteImageView.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                System.out.println(i + "收藏了！");
+            public void onClick(View view) {
+                System.out.println("收藏了" + i);
             }
         });
 

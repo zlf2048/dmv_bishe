@@ -75,25 +75,43 @@ public class ArticleAdapterActivity extends AppCompatActivity {
 
     private void initEvent(){
         mMyAdapter = new MyAdapter(this,mBeanList);
+        System.out.println(mListView);
         mListView.setAdapter(mMyAdapter);
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 ItemBean itemBean = mBeanList.get(i);
-                String title = itemBean.getTitle();
-                Intent intent = new Intent(ArticleAdapterActivity.this, NewsDetailActivity.class);
-                intent.putExtra("item",itemBean);
-                startActivity(intent);
+//                String title = itemBean.getTitle();
+//                System.out.println(title);
+                Table article = new Table("article");
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            Record record = article.fetchRecord("644e83326d7f8c413ec0ebdc");
+                            String content = record.getString("content");
 
-                Toast.makeText(ArticleAdapterActivity.this, "你点击了"+i+title, Toast.LENGTH_SHORT).show();
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    WebView webView = new WebView(ArticleAdapterActivity.this);
+                                    setContentView(webView);
+                                    webView.loadDataWithBaseURL(null, content, "text/html", "UTF-8", null);
+                                }
+                            });
+                        } catch (Exception e) {
+                            System.out.println(e);
+                        }
+                    }
+                }).start();
             }
         });
-        mListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
-                return false;
-            }
-        });
+//        mListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+//            @Override
+//            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+//                return false;
+//            }
+//        });
     }
 
     private void initData(){

@@ -37,12 +37,12 @@
         android:text="人生到处知何似，应似飞鸿踏雪泥。人的一生，辗转各处，像什么呢？正像到处飞的鸟类。"
         android:textSize="16sp"/>
 
-    <Button
-        android:id="@+id/btn_favorite"
+    <ImageView
+        android:id="@+id/iv_favorite"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/iv_img"
         android:layout_marginTop="10dp"
-        android:text="收藏" />
+        android:src="@drawable/star" />
 
 </RelativeLayout>
