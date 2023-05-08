@@ -59,7 +59,8 @@ public class SportFragment extends Fragment {
 
                 double stepLengthInMeters = 0.7; // 假设每步的步长为0.7米
                 double distanceInKilometers = steps * stepLengthInMeters / 1000; // 计算行走距离（公里）
-                length.setText("健走"+String.valueOf(distanceInKilometers)+"公里");
+                String distanceString = String.format("%.2f", distanceInKilometers);
+                length.setText("健走"+distanceString+"公里");
 
                 Calendar calendar = Calendar.getInstance();
                 SimpleDateFormat dateFormat = new SimpleDateFormat("MM月dd日 HH:mm", Locale.CHINA);
