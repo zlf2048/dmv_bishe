@@ -63,7 +63,6 @@ public class ArticleAdapterActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 ItemBean itemBean = mBeanList.get(i);
-                Table article = new Table("article");
 
                 Intent intent = new Intent(ArticleAdapterActivity.this, NewsDetailActivity.class);
                 intent.putExtra("id", itemBean.getId());
