@@ -67,6 +67,7 @@ public class ArticleAdapterActivity extends AppCompatActivity {
 
                 Intent intent = new Intent(ArticleAdapterActivity.this, NewsDetailActivity.class);
                 intent.putExtra("id", itemBean.getId());
+                intent.putExtra("type", "article");
                 startActivity(intent);
             }
         });
@@ -146,34 +147,6 @@ public class ArticleAdapterActivity extends AppCompatActivity {
             newsBean.setTitle(record1.getString("title"));
             newsBean.setContent(record1.getString("abstract"));
             newsBean.setImgBitmap(bitmaps[i]);
-
-//            Thread thread1 = new Thread(new Runnable() {
-//                @Override
-//                public void run() {
-//                    Bitmap bitmap = null;
-//                    try {
-//                        URL url = new URL(record1.getString("img"));
-//                        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-//                        connection.setDoInput(true);
-//                        connection.connect();
-//                        InputStream input = connection.getInputStream();
-//                        bitmap = BitmapFactory.decodeStream(input);
-//                    } catch (MalformedURLException e) {
-//                        throw new RuntimeException(e);
-//                    } catch (IOException e) {
-//                        throw new RuntimeException(e);
-//                    }
-//
-//                    newsBean.setImgBitmap(bitmap);
-//                }
-//            });
-//            thread1.start();
-//
-//            try {
-//                thread1.join();
-//            } catch (InterruptedException e) {
-//                e.printStackTrace();
-//            }
 
             mBeanList.add(newsBean);
         }

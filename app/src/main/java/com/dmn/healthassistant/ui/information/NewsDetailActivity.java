@@ -23,8 +23,9 @@ public class NewsDetailActivity extends AppCompatActivity {
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         String id = (String) bundle.getSerializable("id");
+        String type = (String) bundle.getSerializable("type");
 
-        Table article = new Table("article");
+        Table article = new Table(type);
         new Thread(new Runnable() {
             @Override
             public void run() {
