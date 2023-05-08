@@ -40,8 +40,11 @@ public class LoginActivity extends AppCompatActivity {
         rememberPasswordCheckBox = findViewById(R.id.rememberPasswordCheckBox);
 
         SharedPreferences sharedPreferences = getSharedPreferences("remember", MODE_PRIVATE);
-        userName.setText(sharedPreferences.getString("username",""));
-        accountPassword.setText(sharedPreferences.getString("password",""));
+        if (! sharedPreferences.getAll().isEmpty()) {
+            rememberPasswordCheckBox.setChecked(true);
+            userName.setText(sharedPreferences.getString("username",""));
+            accountPassword.setText(sharedPreferences.getString("password",""));
+        }
 
         //点击新用户注册，跳转到注册界面
         register.setOnClickListener(new View.OnClickListener() {

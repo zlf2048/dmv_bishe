@@ -135,11 +135,6 @@ public class ArticleAdapterActivity extends AppCompatActivity {
         } catch (InterruptedException e) {
             // 处理异常
         }
-//        try {
-//            thread1.join();
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
 
         mBeanList = new ArrayList<>();
 
@@ -150,7 +145,6 @@ public class ArticleAdapterActivity extends AppCompatActivity {
             newsBean.setId(record1.getId());
             newsBean.setTitle(record1.getString("title"));
             newsBean.setContent(record1.getString("abstract"));
-            System.out.println(bitmaps[i]);
             newsBean.setImgBitmap(bitmaps[i]);
 
 //            Thread thread1 = new Thread(new Runnable() {

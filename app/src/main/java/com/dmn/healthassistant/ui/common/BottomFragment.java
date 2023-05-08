@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
@@ -18,6 +19,7 @@ import com.dmn.healthassistant.R;
 import com.dmn.healthassistant.ui.diet.DietFragment;
 import com.dmn.healthassistant.ui.individuality.IndividualityLoginFragment;
 import com.dmn.healthassistant.ui.individuality.IndividualityUnloginFragment;
+import com.dmn.healthassistant.ui.individuality.login.LoginActivity;
 import com.dmn.healthassistant.ui.information.InformationFragment;
 import com.dmn.healthassistant.ui.information.article.ArticleAdapterActivity;
 import com.dmn.healthassistant.ui.sport.SportFragment;
@@ -53,8 +55,14 @@ public class BottomFragment extends Fragment {
         sport.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                replaceFragment(new SportFragment());
-                changeColor(sport, R.drawable.sport1);
+                if (LogUtil.judgeLogin(getActivity())) {
+                    replaceFragment(new SportFragment());
+                    changeColor(sport, R.drawable.sport1);
+                } else {
+                    Toast.makeText(getActivity(), "需登录后才可使用！", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(getActivity(), LoginActivity.class);
+                    startActivity(intent);
+                }
             }
         });
         diet.setOnClickListener(new View.OnClickListener() {
