@@ -5,53 +5,46 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.dmn.healthassistant.R;
 import com.dmn.healthassistant.ui.information.bean.ItemBean;
+import com.minapp.android.sdk.database.Record;
+import com.minapp.android.sdk.database.Table;
 
 public class NewsDetailActivity extends AppCompatActivity {
-
-    private TextView mTvTitle;
-    private TextView mTvContent;
-    private ImageView mIvImage;
-
-    private ItemBean mNewsBean;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_news_detail);
 
-        ActionBar supportActionBar = getSupportActionBar();
-        if(supportActionBar != null) {
-            supportActionBar.setDisplayHomeAsUpEnabled(true);
-        }
-
-        initView();
-        initData();
-        initEvent();
-    }
-
-    private void initView(){
-
-        mIvImage = findViewById(R.id.iv_img);
-        mTvContent = findViewById(R.id.tv_content);
-        mTvTitle = findViewById(R.id.tv_title);
-    }
-
-    private void initData(){
         Intent intent = getIntent();
-        mNewsBean = (ItemBean) intent.getSerializableExtra("item");
-    }
+        Bundle bundle = intent.getExtras();
+        String id = (String) bundle.getSerializable("id");
 
-    private void initEvent(){
-        if (mNewsBean != null){
-            mTvTitle.setText(mNewsBean.getTitle());
-            mTvContent.setText(mNewsBean.getContent());
-            mIvImage.setImageBitmap(mNewsBean.getImgBitmap());
-        }
-    }
+        Table article = new Table("article");
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Record record = article.fetchRecord(id);
+                    String style = "<style>img{display: inline; height: auto; max-width: 100%;}</style>";
+                    String content = style + record.getString("content");
 
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            WebView webView = new WebView(NewsDetailActivity.this);
+                            setContentView(webView);
+                            webView.loadDataWithBaseURL(null, content, "text/html", "UTF-8", null);
+                        }
+                    });
+                } catch (Exception e) {
+                    System.out.println(e);
+                }
+            }
+        }).start();
+    }
 }

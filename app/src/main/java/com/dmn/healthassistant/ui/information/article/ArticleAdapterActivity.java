@@ -22,6 +22,7 @@ import com.dmn.healthassistant.R;
 import com.dmn.healthassistant.ui.information.NewsDetailActivity;
 import com.dmn.healthassistant.ui.information.adapter.MyAdapter;
 import com.dmn.healthassistant.ui.information.bean.ItemBean;
+import com.dmn.healthassistant.ui.information.journal.JournalAdapterActivity;
 import com.minapp.android.sdk.database.Record;
 import com.minapp.android.sdk.database.Table;
 import com.minapp.android.sdk.database.query.Query;
@@ -34,6 +35,9 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 public class ArticleAdapterActivity extends AppCompatActivity {
 
@@ -49,28 +53,6 @@ public class ArticleAdapterActivity extends AppCompatActivity {
         initView();
         initData();
         initEvent();
-
-//        Table article = new Table("article");
-//        new Thread(new Runnable() {
-//            @Override
-//            public void run() {
-//                try {
-//                    Record record = article.fetchRecord("644e83326d7f8c413ec0ebdc");
-//                    String content = record.getString("content");
-//
-//                    runOnUiThread(new Runnable() {
-//                        @Override
-//                        public void run() {
-//                            WebView webView = new WebView(ArticleAdapterActivity.this);
-//                            setContentView(webView);
-//                            webView.loadDataWithBaseURL(null, content, "text/html", "UTF-8", null);
-//                        }
-//                    });
-//                } catch (Exception e) {
-//                    System.out.println(e);
-//                }
-//            }
-//        }).start();
     }
 
     private void initEvent(){
@@ -82,34 +64,12 @@ public class ArticleAdapterActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 ItemBean itemBean = mBeanList.get(i);
                 Table article = new Table("article");
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        try {
-                            Record record = article.fetchRecord(itemBean.getId());
-                            String content = record.getString("content");
 
-                            runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    WebView webView = new WebView(ArticleAdapterActivity.this);
-                                    setContentView(webView);
-                                    webView.loadDataWithBaseURL(null, content, "text/html", "UTF-8", null);
-                                }
-                            });
-                        } catch (Exception e) {
-                            System.out.println(e);
-                        }
-                    }
-                }).start();
+                Intent intent = new Intent(ArticleAdapterActivity.this, NewsDetailActivity.class);
+                intent.putExtra("id", itemBean.getId());
+                startActivity(intent);
             }
         });
-//        mListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-//            @Override
-//            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
-//                return false;
-//            }
-//        });
     }
 
     private void initData(){
@@ -141,17 +101,13 @@ public class ArticleAdapterActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        mBeanList = new ArrayList<>();
-
+        int threadPoolSize = 5; // 线程池大小
+        ExecutorService executor = Executors.newFixedThreadPool(threadPoolSize); // 创建一个固定大小的线程池
+        Bitmap[] bitmaps = new Bitmap[20];
         for (int i = 0; i < record.length && record[i] != null; i++) {
+            final int[] index = new int[]{i};
             Record record1 = record[i];
-
-            ItemBean newsBean = new ItemBean();
-            newsBean.setId(record1.getId());
-            newsBean.setTitle(record1.getString("title"));
-            newsBean.setContent(record1.getString("abstract"));
-
-            Thread thread1 = new Thread(new Runnable() {
+            executor.execute(new Runnable() { // 提交任务给线程池执行
                 @Override
                 public void run() {
                     Bitmap bitmap = null;
@@ -168,16 +124,62 @@ public class ArticleAdapterActivity extends AppCompatActivity {
                         throw new RuntimeException(e);
                     }
 
-                    newsBean.setImgBitmap(bitmap);
+                    bitmaps[index[0]] = bitmap;
+                    System.out.println(bitmaps[index[0]]);
                 }
             });
-            thread1.start();
+        }
+        executor.shutdown(); // 关闭线程池
+        try {
+            executor.awaitTermination(Long.MAX_VALUE, TimeUnit.NANOSECONDS);
+        } catch (InterruptedException e) {
+            // 处理异常
+        }
+//        try {
+//            thread1.join();
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
 
-            try {
-                thread1.join();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+        mBeanList = new ArrayList<>();
+
+        for (int i = 0; i < record.length && record[i] != null; i++) {
+            Record record1 = record[i];
+
+            ItemBean newsBean = new ItemBean();
+            newsBean.setId(record1.getId());
+            newsBean.setTitle(record1.getString("title"));
+            newsBean.setContent(record1.getString("abstract"));
+            System.out.println(bitmaps[i]);
+            newsBean.setImgBitmap(bitmaps[i]);
+
+//            Thread thread1 = new Thread(new Runnable() {
+//                @Override
+//                public void run() {
+//                    Bitmap bitmap = null;
+//                    try {
+//                        URL url = new URL(record1.getString("img"));
+//                        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+//                        connection.setDoInput(true);
+//                        connection.connect();
+//                        InputStream input = connection.getInputStream();
+//                        bitmap = BitmapFactory.decodeStream(input);
+//                    } catch (MalformedURLException e) {
+//                        throw new RuntimeException(e);
+//                    } catch (IOException e) {
+//                        throw new RuntimeException(e);
+//                    }
+//
+//                    newsBean.setImgBitmap(bitmap);
+//                }
+//            });
+//            thread1.start();
+//
+//            try {
+//                thread1.join();
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
 
             mBeanList.add(newsBean);
         }
