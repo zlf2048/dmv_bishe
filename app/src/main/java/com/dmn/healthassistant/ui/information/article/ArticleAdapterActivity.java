@@ -81,14 +81,12 @@ public class ArticleAdapterActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 ItemBean itemBean = mBeanList.get(i);
-//                String title = itemBean.getTitle();
-//                System.out.println(title);
                 Table article = new Table("article");
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
                         try {
-                            Record record = article.fetchRecord("644e83326d7f8c413ec0ebdc");
+                            Record record = article.fetchRecord(itemBean.getId());
                             String content = record.getString("content");
 
                             runOnUiThread(new Runnable() {
@@ -149,6 +147,7 @@ public class ArticleAdapterActivity extends AppCompatActivity {
             Record record1 = record[i];
 
             ItemBean newsBean = new ItemBean();
+            newsBean.setId(record1.getId());
             newsBean.setTitle(record1.getString("title"));
             newsBean.setContent(record1.getString("abstract"));
 

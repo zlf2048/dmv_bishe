@@ -10,6 +10,8 @@ public class ItemBean implements Serializable {
     private String content;
     private Bitmap imgBitmap;
 
+    private String id;
+
 
     public String getTitle() {
         return title;
@@ -33,6 +35,14 @@ public class ItemBean implements Serializable {
 
     public void setImgBitmap(Bitmap bitmap) {
         this.imgBitmap = bitmap;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     @Override
