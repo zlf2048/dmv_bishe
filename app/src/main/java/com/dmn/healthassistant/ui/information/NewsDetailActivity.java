@@ -24,28 +24,36 @@ public class NewsDetailActivity extends AppCompatActivity {
         Bundle bundle = intent.getExtras();
         String id = (String) bundle.getSerializable("id");
         String type = (String) bundle.getSerializable("type");
+        String html = (String) bundle.getSerializable("content");
+        if (type != null && !type.isEmpty()){
+            Table article = new Table(type);
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        Record record = article.fetchRecord(id);
+                        String style = "<style>img{display: inline; height: auto; max-width: 100%;}</style>";
+                        String content = style + record.getString("content");
 
-        Table article = new Table(type);
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    Record record = article.fetchRecord(id);
-                    String style = "<style>img{display: inline; height: auto; max-width: 100%;}</style>";
-                    String content = style + record.getString("content");
-
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            WebView webView = new WebView(NewsDetailActivity.this);
-                            setContentView(webView);
-                            webView.loadDataWithBaseURL(null, content, "text/html", "UTF-8", null);
-                        }
-                    });
-                } catch (Exception e) {
-                    System.out.println(e);
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                WebView webView = new WebView(NewsDetailActivity.this);
+                                setContentView(webView);
+                                webView.loadDataWithBaseURL(null, content, "text/html", "UTF-8", null);
+                            }
+                        });
+                    } catch (Exception e) {
+                        System.out.println(e);
+                    }
                 }
-            }
-        }).start();
+            }).start();
+        } else {
+            String style = "<style>img{display: inline; height: auto; max-width: 100%;}</style>";
+            String content = style + html;
+            WebView webView = new WebView(NewsDetailActivity.this);
+            setContentView(webView);
+            webView.loadDataWithBaseURL(null, content, "text/html", "UTF-8", null);
+        }
     }
 }

@@ -8,9 +8,12 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.dmn.healthassistant.R;
+import com.dmn.healthassistant.model.Collection;
 import com.dmn.healthassistant.ui.information.bean.ItemBean;
+import com.dmn.healthassistant.util.CollectionUtil;
 
 import java.util.List;
 
@@ -59,7 +62,17 @@ public class MyAdapter extends BaseAdapter {
         favoriteImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                System.out.println("收藏了" + i);
+                Collection collection = new Collection(mBeanList.get(i).getId(), mBeanList.get(i).getTitle(), mBeanList.get(i).getImgBitmap(), mBeanList.get(i).getContent(), mBeanList.get(i).getHtml());
+                CollectionUtil collectionUtil = new CollectionUtil(mContext);
+
+                if (collectionUtil.isCollectionExist(collection.getId())) {
+                    // 文章已经被收藏
+                    Toast.makeText(mContext, "已经被收藏了，无需重复收藏", Toast.LENGTH_SHORT).show();
+                } else {
+                    // 文章未被收藏
+                    collectionUtil.saveCollection(collection);
+                    Toast.makeText(mContext, "已收藏", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 

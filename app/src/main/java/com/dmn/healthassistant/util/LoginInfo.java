@@ -57,7 +57,7 @@ public class LoginInfo extends SQLiteOpenHelper {
         values.put(COLUMN_CITY, user.getCity());
         values.put(COLUMN_EMAIL, user.getEmail());
         db.insert(TABLE_NAME, null, values);
-//        db.close();
+        db.close();
     }
 
     public Userinfo getLoginInfo() {
@@ -90,7 +90,7 @@ public class LoginInfo extends SQLiteOpenHelper {
         String whereClause = COLUMN_ID + "=?";
         String[] whereArgs = new String[] {String.valueOf(userinfo.getId())};
         db.update(TABLE_NAME, values, whereClause, whereArgs);
-//        db.close();
+        db.close();
     }
 
     public void deleteLoginInfo(Userinfo userinfo) {
@@ -98,6 +98,6 @@ public class LoginInfo extends SQLiteOpenHelper {
         String whereClause = COLUMN_ID + "=?";
         String[] whereArgs = new String[] {String.valueOf(userinfo.getId())};
         db.delete(TABLE_NAME, whereClause, whereArgs);
-//        db.close();
+        db.close();
     }
 }

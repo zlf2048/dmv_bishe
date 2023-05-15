@@ -11,6 +11,7 @@ public class ItemBean implements Serializable {
     private Bitmap imgBitmap;
 
     private String id;
+    private String html;
 
 
     public String getTitle() {
@@ -43,6 +44,14 @@ public class ItemBean implements Serializable {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getHtml() {
+        return html;
+    }
+
+    public void setHtml(String html) {
+        this.html = html;
     }
 
     @Override

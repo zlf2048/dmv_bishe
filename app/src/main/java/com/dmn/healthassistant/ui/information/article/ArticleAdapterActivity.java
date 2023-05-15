@@ -125,7 +125,6 @@ public class ArticleAdapterActivity extends AppCompatActivity {
                     }
 
                     bitmaps[index[0]] = bitmap;
-                    System.out.println(bitmaps[index[0]]);
                 }
             });
         }
@@ -143,6 +142,7 @@ public class ArticleAdapterActivity extends AppCompatActivity {
 
             ItemBean newsBean = new ItemBean();
             newsBean.setId(record1.getId());
+            newsBean.setHtml(record1.getString("content"));
             newsBean.setTitle(record1.getString("title"));
             newsBean.setContent(record1.getString("abstract"));
             newsBean.setImgBitmap(bitmaps[i]);

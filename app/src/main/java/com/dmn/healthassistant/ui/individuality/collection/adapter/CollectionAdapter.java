@@ -4,14 +4,18 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.dmn.healthassistant.R;
+import com.dmn.healthassistant.model.Collection;
 import com.dmn.healthassistant.ui.individuality.collection.bean.CollectionItemBean;
 import com.dmn.healthassistant.ui.information.bean.ItemBean;
+import com.dmn.healthassistant.util.CollectionUtil;
 
 import java.util.List;
 
@@ -59,7 +63,11 @@ public class CollectionAdapter extends BaseAdapter {
         favoriteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                System.out.println(i + "收藏了！");
+                CollectionUtil collectionUtil = new CollectionUtil(mContext);
+                collectionUtil.deleteCollection(mBeanList.get(i).getId());
+                Toast.makeText(mContext, "已取消收藏", Toast.LENGTH_SHORT).show();
+                mBeanList.remove(itemBean);
+                notifyDataSetChanged();
             }
         });
 
