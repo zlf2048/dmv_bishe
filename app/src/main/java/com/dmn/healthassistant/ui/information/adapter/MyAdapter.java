@@ -59,11 +59,16 @@ public class MyAdapter extends BaseAdapter {
         tvTitle.setText(itemBean.getTitle());
         tvContent.setText(itemBean.getContent());
 
+        //设置星星颜色
+        CollectionUtil collectionUtil = new CollectionUtil(mContext);
+        if (collectionUtil.isCollectionExist(mBeanList.get(i).getId())) {
+            favoriteImageView.setImageResource(R.drawable.star);
+        }
+
         favoriteImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Collection collection = new Collection(mBeanList.get(i).getId(), mBeanList.get(i).getTitle(), mBeanList.get(i).getImgBitmap(), mBeanList.get(i).getContent(), mBeanList.get(i).getHtml());
-                CollectionUtil collectionUtil = new CollectionUtil(mContext);
 
                 if (collectionUtil.isCollectionExist(collection.getId())) {
                     // 文章已经被收藏
@@ -72,6 +77,7 @@ public class MyAdapter extends BaseAdapter {
                     // 文章未被收藏
                     collectionUtil.saveCollection(collection);
                     Toast.makeText(mContext, "已收藏", Toast.LENGTH_SHORT).show();
+                    favoriteImageView.setImageResource(R.drawable.star);
                 }
             }
         });

@@ -35,9 +35,9 @@ public class CollectionUtil extends SQLiteOpenHelper {
         String createTableSql = "CREATE TABLE " + TABLE_NAME + " (" +
                 COLUMN_ID + " TEXT PRIMARY KEY," +
                 COLUMN_TITLE + " TEXT," +
-                COLUMN_IMG + " INTEGER," +
+                COLUMN_IMG + " BLOB," +
                 COLUMN_ABSTRACT + " TEXT," +
-                COLUMN_CONTENT + " BLOB " +
+                COLUMN_CONTENT + " TEXT " +
                 ")";
         db.execSQL(createTableSql);
     }
