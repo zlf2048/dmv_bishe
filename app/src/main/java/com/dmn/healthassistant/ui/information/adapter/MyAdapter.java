@@ -1,6 +1,7 @@
 package com.dmn.healthassistant.ui.information.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,8 +13,11 @@ import android.widget.Toast;
 
 import com.dmn.healthassistant.R;
 import com.dmn.healthassistant.model.Collection;
+import com.dmn.healthassistant.ui.individuality.login.LoginActivity;
 import com.dmn.healthassistant.ui.information.bean.ItemBean;
+import com.dmn.healthassistant.ui.sport.SportFragment;
 import com.dmn.healthassistant.util.CollectionUtil;
+import com.dmn.healthassistant.util.LogUtil;
 
 import java.util.List;
 
@@ -59,11 +63,16 @@ public class MyAdapter extends BaseAdapter {
         tvTitle.setText(itemBean.getTitle());
         tvContent.setText(itemBean.getContent());
 
-        //设置星星颜色
+        //判断是否登录
         CollectionUtil collectionUtil = new CollectionUtil(mContext);
-        if (collectionUtil.isCollectionExist(mBeanList.get(i).getId())) {
-            favoriteImageView.setImageResource(R.drawable.star);
+        if (LogUtil.judgeLogin(mContext)) {
+            if (collectionUtil.isCollectionExist(mBeanList.get(i).getId())) {
+                favoriteImageView.setImageResource(R.drawable.star);  //设置星星颜色
+            }
+        } else {
+            favoriteImageView.setVisibility(View.GONE);  //隐藏星星
         }
+
 
         favoriteImageView.setOnClickListener(new View.OnClickListener() {
             @Override

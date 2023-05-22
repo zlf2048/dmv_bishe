@@ -25,9 +25,17 @@ public class CollectionUtil extends SQLiteOpenHelper {
     private static final String COLUMN_IMG = "img";
     private static final String COLUMN_ABSTRACT= "abstract";
     private static final String COLUMN_CONTENT = "content";
+    private static final String COLUMN_USER_ID = "user_id";
 
+    private Context mContext;
+    private String id;
     public CollectionUtil(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        this.mContext = context;
+        LoginInfo loginInfo = new LoginInfo(mContext);
+        if(loginInfo.getLoginInfo() != null) {
+            this.id = loginInfo.getLoginInfo().getId();
+        }
     }
 
     @Override
@@ -37,7 +45,8 @@ public class CollectionUtil extends SQLiteOpenHelper {
                 COLUMN_TITLE + " TEXT," +
                 COLUMN_IMG + " BLOB," +
                 COLUMN_ABSTRACT + " TEXT," +
-                COLUMN_CONTENT + " TEXT " +
+                COLUMN_CONTENT + " TEXT, " +
+                COLUMN_USER_ID + " TEXT " +
                 ")";
         db.execSQL(createTableSql);
     }
@@ -55,6 +64,8 @@ public class CollectionUtil extends SQLiteOpenHelper {
         values.put(COLUMN_ABSTRACT, collection.getAbstr());
         values.put(COLUMN_CONTENT, collection.getContent());
 
+        values.put(COLUMN_USER_ID, id);
+
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         collection.getImg().compress(Bitmap.CompressFormat.PNG, 0, outputStream);
         byte[] image = outputStream.toByteArray();
@@ -67,7 +78,9 @@ public class CollectionUtil extends SQLiteOpenHelper {
     public List<Collection> getCollections() {
         List<Collection> collections = new ArrayList<>();
         SQLiteDatabase db = getReadableDatabase();
-        Cursor cursor = db.query(TABLE_NAME, null, null, null, null, null, null);
+        String selection = "user_id = ?";
+        String[] selectionArgs = { id };
+        Cursor cursor = db.query(TABLE_NAME, null, selection, selectionArgs, null, null, null);
         while (cursor.moveToNext()) {
             @SuppressLint("Range") String id = cursor.getString(cursor.getColumnIndex(COLUMN_ID));
             @SuppressLint("Range") String title = cursor.getString(cursor.getColumnIndex(COLUMN_TITLE));
@@ -94,8 +107,8 @@ public class CollectionUtil extends SQLiteOpenHelper {
 
     public boolean isCollectionExist(String id) {
         SQLiteDatabase db = getReadableDatabase();
-        String selection = COLUMN_ID + "=?";
-        String[] selectionArgs = new String[]{String.valueOf(id)};
+        String selection = COLUMN_ID + "=? AND user_id=?";
+        String[] selectionArgs = new String[]{String.valueOf(id), this.id};
         Cursor cursor = db.query(TABLE_NAME, null, selection, selectionArgs, null, null, null);
         boolean isExist = cursor.moveToFirst();
         cursor.close();
