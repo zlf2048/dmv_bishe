@@ -4,6 +4,8 @@ import android.content.Intent;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.SharedPreferences;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -36,125 +38,56 @@ public class RegisterActivity extends AppCompatActivity {
         registerUserTextInputLayout = findViewById(R.id.registerUserTextInputLayout);
         registerMaterialButton = findViewById(R.id.registerMaterialButton);  //注册按钮
 
-        registerUserEditText.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                int textCount = registerUserEditText.getText().length();
-
-                LogUtil.d("RegisterActivity", "" + textCount);
-
-                switch (textCount) {
-                    case 0:
-                    case 1:
-                    case 2:
-                    case 3:
-                    case 17:
-                    case 18:
-                        registerUserTextInputLayout.setBoxStrokeColor(getResources().getColor(R.color.error_color));
-                        registerUserTextInputLayout.setEndIconDrawable(getDrawable(R.drawable.cuowu));
-                        registerUserTextInputLayout.setEndIconTintList(getResources().getColorStateList(R.color.error_color));
-                        break;
-                    default:
-                        registerUserTextInputLayout.setBoxStrokeColor(getResources().getColor(R.color.ripple_color));
-                        // registerUserTextInputLayout.setEndIconDrawable(getDrawable(R.drawable.zhengque));
-                        // registerUserTextInputLayout.setEndIconTintList(getResources().getColorStateList(R.color.ripple_color));
-                        break;
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-            }
-        });
-
-//        phoneNumberEditText.addTextChangedListener(new TextWatcher() {
-//            @Override
-//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-//
-//            @Override
-//            public void onTextChanged(CharSequence s, int start, int before, int count) {
-//                // 这里实现提示手机号是否可用的逻辑，不要忘记处理当手机号已被使用时找回密码的逻辑
-//            }
-//
-//            @Override
-//            public void afterTextChanged(Editable s) {}
-//        });
-
-//        getVerificationCodeMaterialButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                // 获取验证码
-//            }
-//        });
-
-        registerPasswordEditText.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                // 处理密码是否符合格式要求逻辑
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-            }
-        });
-
-//        findPassword.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                finish();
-////                Intent intent = new Intent(this, ForgetPasswordActivity.class);
-////                startActivity(intent);
-//            }
-//        });
-
-
-        //请求注册
         registerMaterialButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
                 String usernameText = registerUserEditText.getText().toString();
                 String passwordText = registerPasswordEditText.getText().toString();
+                if (usernameText.length() >= 4 && usernameText.length() <= 16 && usernameText.matches("^[a-zA-Z0-9]+$") &&
+                        passwordText.length() >= 6 && passwordText.length() <= 16 && passwordText.matches("^[a-zA-Z0-9!@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>\\/?]+$")) {
+                    // 用户名和密码都符合要求
+                    // 执行注册操作
+                    final Handler handler = new Handler(Looper.getMainLooper());
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                                User user = Auth.signUpByUsername(usernameText, passwordText);
+                                //传递登录状态，表明已登录
+                                LogUtil.loginStatus(RegisterActivity.this);
+                                //保存注册用户信息
+                                LoginInfo loginInfo = new LoginInfo(RegisterActivity.this);
+                                loginInfo.saveLoginInfo(user);
 
-                final Handler handler = new Handler(Looper.getMainLooper());
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        try {
-                            User user = Auth.signUpByUsername(usernameText, passwordText);
-                            //传递登录状态，表明已登录
-                            LogUtil.loginStatus(RegisterActivity.this);
-                            //保存注册用户信息
-                            LoginInfo loginInfo = new LoginInfo(RegisterActivity.this);
-                            loginInfo.saveLoginInfo(user);
-
-                            handler.post(new Runnable() {
-                                @Override
-                                public void run() {
-                                    Toast.makeText(getApplicationContext(), "注册成功", Toast.LENGTH_SHORT).show();
-                                }
-                            });
-                            finish();
-                            Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
-                            startActivity(intent);
-                        } catch (Exception e) {
-                            System.out.println(e);
-                            handler.post(new Runnable() {
-                                @Override
-                                public void run() {
-                                    Toast.makeText(getApplicationContext(), "注册失败，请重试", Toast.LENGTH_SHORT).show();
-                                }
-                            });
+                                handler.post(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        Toast.makeText(getApplicationContext(), "注册成功", Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+                                finish();
+                                Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+                                startActivity(intent);
+                            } catch (Exception e) {
+                                System.out.println(e);
+                                handler.post(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        Toast.makeText(getApplicationContext(), "注册失败，请重试", Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+                            }
                         }
+                    }).start();
+                } else {
+                    // 用户名或密码不符合要求
+                    if (!(usernameText.length() >= 4 && usernameText.length() <= 16 && usernameText.matches("^[a-zA-Z0-9]+$"))) {
+                        Toast.makeText(RegisterActivity.this, "用户名必须为4-16位字母和数字组合", Toast.LENGTH_SHORT).show();
                     }
-                }).start();
+                    if (!(passwordText.length() >= 6 && passwordText.length() <= 16 && passwordText.matches("^[a-zA-Z0-9!@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>\\/?]+$"))) {
+                        Toast.makeText(RegisterActivity.this, "密码必须为6-16位字母、数字、特殊符号组合", Toast.LENGTH_SHORT).show();
+                    }
+                }
             }
         });
 
