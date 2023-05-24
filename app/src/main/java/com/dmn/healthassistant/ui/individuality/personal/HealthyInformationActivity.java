@@ -138,6 +138,7 @@ public class HealthyInformationActivity extends AppCompatActivity implements Dat
             dialog.show();//窗口弹出
         });
 
+        //获取用户输入的信息并将其保存到云端表中
         newMaterialButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

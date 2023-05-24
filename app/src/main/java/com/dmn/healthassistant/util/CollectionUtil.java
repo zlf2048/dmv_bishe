@@ -41,7 +41,7 @@ public class CollectionUtil extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String createTableSql = "CREATE TABLE " + TABLE_NAME + " (" +
-                COLUMN_ID + " TEXT PRIMARY KEY," +
+                COLUMN_ID + " TEXT," +
                 COLUMN_TITLE + " TEXT," +
                 COLUMN_IMG + " BLOB," +
                 COLUMN_ABSTRACT + " TEXT," +

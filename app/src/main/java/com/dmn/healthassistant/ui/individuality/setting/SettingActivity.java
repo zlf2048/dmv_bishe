@@ -67,3 +67,7 @@ public class SettingActivity extends AppCompatActivity {
         });
     }
 }
+
+//首先定义了一个名为SettingActivity的类，它继承了AppCompatActivity。这个类用于处理用户退出登录。
+//1.在onCreate方法中，代码首先通过调用setContentView(R.layout.activity_setting)来设置布局。然后，它使用findViewById方法来获取布局中的退出登录按钮。
+//2.接下来，代码为退出登录按钮添加了一个点击监听器。当用户点击退出登录按钮时，代码会在新线程中调用Auth.logout()方法进行退出登录。如果退出登录成功，代码会删除用户信息并跳转到MainActivity。

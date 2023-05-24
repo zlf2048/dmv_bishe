@@ -88,3 +88,17 @@ public class StepService extends Service implements SensorEventListener {
         // 在这里处理传感器精度变化事件
     }
 }
+
+//这段代码定义了一个名为 StepService 的类，它继承自 Service 类并实现了 SensorEventListener 接口，用于实现计步功能。
+//
+//在 onCreate 方法中，首先通过 getSystemService 方法获取了 SensorManager 管理器实例。然后通过 getDefaultSensor 方法获取了计步器 sensor。
+//
+//在 onStartCommand 方法中，判断计步器 sensor 是否存在。如果存在，则调用 registerListener 方法注册监听器，监听计步器 sensor 的数据变化。
+//
+//在 onDestroy 方法中，如果 SensorManager 管理器实例不为空，则调用 unregisterListener 方法取消监听器的注册。
+//
+//在 onBind 方法中，返回了 null，表示该服务不需要与其他组件进行通信。
+//
+//在 onSensorChanged 方法中，处理传感器数据变化事件。当 event.values[0] 等于 1 时，表示检测到一步，将 mSteps 变量加 1。然后将 mSteps 变量的值保存到 SharedPreferences 中。
+//
+//在 onAccuracyChanged 方法中，处理传感器精度变化事件。但该方法并未实现任何功能

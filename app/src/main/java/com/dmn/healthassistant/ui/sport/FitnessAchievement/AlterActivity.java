@@ -100,3 +100,11 @@ public class AlterActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 }
+
+//这段代码是一个 Android 应用程序中的 AlterActivity 类。它继承自 AppCompatActivity 类并实现了 View.OnClickListener 接口，用于实现修改数据的功能。
+//
+//在 onCreate 方法中，首先调用了 setContentView 方法设置了该活动的布局文件为 R.layout.activity_alter。然后通过 getSharedPreferences 方法获取了 SharedPreferences 对象，并获取了 SharedPreferences.Editor 对象。接着从 SharedPreferences 对象中获取了 id、types、dates、money 和 time 五个值。然后通过 findViewById 方法获取了布局文件中的各个控件，包括返回图标、提交按钮、日期输入框、金额输入框和时间输入框等。最后为返回图标和提交按钮设置了点击监听器，并为日期输入框、金额输入框和时间输入框设置了文本。
+//
+//在 getData 方法中，使用 SQLite 数据库查询 intoTypes 表中的数据，并将查询结果存储在一个字符串数组中。
+//
+//在 onClick 方法中，根据被点击控件的 ID 进行不同的处理。当点击返回图标时，结束当前活动；当点击提交按钮时，获取日期输入框、金额输入框和时间输入框中的文本，并检查是否为空。如果有任意一个为空，则弹出一个 Toast 提示“信息不完整！”。否则，使用 SQLite 数据库更新 intoTable 表中指定 id 的数据，并弹出一个 Toast 提示“修改成功”。

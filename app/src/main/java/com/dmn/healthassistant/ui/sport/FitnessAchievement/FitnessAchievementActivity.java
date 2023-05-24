@@ -177,3 +177,17 @@ public class FitnessAchievementActivity extends AppCompatActivity implements Vie
         return list;
     }
 }
+
+//这段代码是一个 Android 应用程序中的 FitnessAchievementActivity 类。它继承自 AppCompatActivity 类并实现了 View.OnClickListener 接口，用于显示健身成就列表。
+//
+//在 onCreate 方法中，首先调用了 setContentView 方法设置了该活动的布局文件为 R.layout.activity_fitness_achievement。然后通过 getSharedPreferences 方法获取了 SharedPreferences 对象，并获取了 SharedPreferences.Editor 对象。接着通过 findViewById 方法获取了布局文件中的各个控件，包括返回图标、添加文本和 ListView 等。最后为返回图标和添加文本设置了点击监听器，并调用 getData 方法获取数据。然后创建了一个 MyAdapter 对象，并将其设置为 ListView 的适配器。接着为 ListView 设置了一个长按监听器和一个点击监听器。
+//
+//在 onClick 方法中，根据被点击控件的 ID 进行不同的处理。当点击返回图标时，结束当前活动；当点击添加文本时，跳转到 AddActivity。
+//
+//在 deleteRecord 方法中，使用 SQLite 数据库删除 intoTable 表中指定 id 的数据。
+//
+//在 onResume 方法中，调用 getData 方法获取数据。然后创建一个新的 MyAdapter 对象，并将其设置为 ListView 的适配器。
+//
+//在 MyAdapter 类中，重写了 getView 方法，用于为每个数据项创建视图并填充数据。
+//
+//在 getData 方法中，使用 SQLite 数据库查询 intoTable 表中的数据，并将查询结果存储在一个 Map 列表中

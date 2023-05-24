@@ -165,3 +165,10 @@ public class BasicInformationActivity extends AppCompatActivity {
         }
     }
 }
+
+//首先定义了一个名为BasicInformationActivity的类。这个类用于处理用户基本信息的显示和修改。
+//1.在onCreate方法中，首先通过调用setContentView(R.layout.activity_basic_information)来设置布局。然后，它使用findViewById方法来获取布局中的各个组件，包括昵称、用户名、性别、城市、电子邮件的输入框和保存按钮等。
+//2.接下来，获取登录用户的ID，并在新线程中调用相应的方法来获取用户的基本信息。然后，代码将这些信息显示在相应的输入框中。
+//3.然后，为性别输入框添加了一个点击监听器。当用户点击性别输入框时，代码会弹出一个单选对话框，让用户选择性别。
+//4.最后，为保存按钮添加了一个点击监听器。当用户点击保存按钮时，代码会获取各个输入框的值，并将它们保存到后台服务器中。
+//5.此外，还定义了两个静态方法：genderCode和genderString。这两个方法分别用于将性别字符串转换为整数代码和将整数代码转换为性别字符串。

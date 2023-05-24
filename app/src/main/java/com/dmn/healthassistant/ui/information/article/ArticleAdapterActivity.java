@@ -155,3 +155,17 @@ public class ArticleAdapterActivity extends AppCompatActivity {
         mListView = findViewById(R.id.lv);
     }
 }
+
+//这段代码是一个 Android 应用程序中的 ArticleAdapterActivity 类。它继承自 AppCompatActivity 类，用于显示文章列表。
+//
+//在 onCreate 方法中，调用了 setContentView 方法设置了该活动的布局文件为 R.layout.activity_article_adapter。然后分别调用了 initView、initData 和 initEvent 方法，用于初始化视图、数据和事件。
+//
+//在 initView 方法中，通过 findViewById 方法获取了布局文件中的 ListView 控件。
+//
+//在 initData 方法中，首先创建了一个 Table 对象，并传入 “article” 作为参数。然后在一个新的线程中执行了获取文章列表的操作。调用了 Table 类的 query 方法，传入一个 Query 对象，获取指定范围内的文章列表。
+//
+//接着，在主线程中等待新线程执行完毕。然后创建了一个固定大小的线程池，并使用线程池执行获取文章图片的操作。
+//
+//最后，在主线程中等待线程池中所有任务执行完毕。然后遍历文章列表，为每篇文章创建一个 ItemBean 对象，并将其添加到 ItemBean 对象列表中。
+//
+//在 initEvent 方法中，创建了一个 MyAdapter 对象，并传入 ItemBean 对象列表作为参数。然后将 MyAdapter 对象设置为 ListView 的适配器。接着为 ListView 设置了一个点击监听器。当用户点击某个数据项时，会跳转到 NewsDetailActivity，并传递该数据项的 id 和 type 值。

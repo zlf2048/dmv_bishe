@@ -150,3 +150,10 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 }
+
+//首先定义了一个名为LoginActivity的类，它继承了AppCompatActivity。这个类用于处理用户登录。
+//1.在onCreate方法中，通过调用setContentView(R.layout.activity_login)来设置布局。然后，它使用findViewById方法来获取布局中的各个组件，包括用户名输入框、密码输入框、登录按钮、注册文本和记住密码复选框等。
+//2.接下来，代码检查是否有保存的用户名和密码。如果有，则将记住密码复选框设为选中状态，并将用户名和密码填充到相应的输入框中。
+//3.然后，代码为注册文本添加了一个点击监听器。当用户点击注册文本时，代码会跳转到RegisterActivity。
+//4.最后，代码为登录按钮添加了一个点击监听器。当用户点击登录按钮时，代码会获取用户名和密码，并在新线程中调用Auth.signInByUsername(userNameText, accountPasswordText)方法进行登录。如果登录成功，代码会保存用户信息并跳转到MainActivity，在主线程中弹出 Toast 提示“注册成功”。如果注册失败，则会弹出“注册失败，请重试”。
+//5.此外，还定义了一个名为rememberPassword的方法，用于根据用户是否勾选了记住密码复选框来保存或删除用户名和密码
