@@ -43,8 +43,8 @@ public class RegisterActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String usernameText = registerUserEditText.getText().toString();
                 String passwordText = registerPasswordEditText.getText().toString();
-                if (usernameText.length() >= 4 && usernameText.length() <= 16 && usernameText.matches("^[a-zA-Z0-9]+$") &&
-                        passwordText.length() >= 6 && passwordText.length() <= 16 && passwordText.matches("^[a-zA-Z0-9!@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>\\/?]+$")) {
+                if (usernameText.length() >= 4 && usernameText.length() <= 16 && usernameText.matches("^[a-zA-Z0-9]+$") && usernameText.matches(".*[a-zA-Z].*") && usernameText.matches(".*\\d.*") &&
+                        passwordText.length() >= 6 && passwordText.length() <= 16 && passwordText.matches("^[a-zA-Z0-9!@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>\\/?]+$") && passwordText.matches(".*[a-zA-Z].*") && passwordText.matches(".*\\d.*")) {
                     // 用户名和密码都符合要求
                     // 执行注册操作
                     final Handler handler = new Handler(Looper.getMainLooper());
@@ -79,12 +79,13 @@ public class RegisterActivity extends AppCompatActivity {
                             }
                         }
                     }).start();
+                    Toast.makeText(RegisterActivity.this, "注册成功", Toast.LENGTH_SHORT).show();
                 } else {
                     // 用户名或密码不符合要求
-                    if (!(usernameText.length() >= 4 && usernameText.length() <= 16 && usernameText.matches("^[a-zA-Z0-9]+$"))) {
+                    if (!(usernameText.length() >= 4 && usernameText.length() <= 16 && usernameText.matches("^[a-zA-Z0-9]+$") && usernameText.matches(".*[a-zA-Z].*") && usernameText.matches(".*\\d.*"))) {
                         Toast.makeText(RegisterActivity.this, "用户名必须为4-16位字母和数字组合", Toast.LENGTH_SHORT).show();
                     }
-                    if (!(passwordText.length() >= 6 && passwordText.length() <= 16 && passwordText.matches("^[a-zA-Z0-9!@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>\\/?]+$"))) {
+                    if (!(passwordText.length() >= 6 && passwordText.length() <= 16 && passwordText.matches("^[a-zA-Z0-9!@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>\\/?]+$") && passwordText.matches(".*[a-zA-Z].*") && passwordText.matches(".*\\d.*"))) {
                         Toast.makeText(RegisterActivity.this, "密码必须为6-16位字母、数字、特殊符号组合", Toast.LENGTH_SHORT).show();
                     }
                 }
