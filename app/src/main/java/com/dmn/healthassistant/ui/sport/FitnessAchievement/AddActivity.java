@@ -25,6 +25,7 @@ public class AddActivity extends AppCompatActivity implements View.OnClickListen
     private String types, dates, money,time;
     private SharedPreferences sp;
     private SharedPreferences.Editor editor;
+    private String user_id;//1
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +33,7 @@ public class AddActivity extends AppCompatActivity implements View.OnClickListen
         setContentView(R.layout.activity_add);
         sp = getSharedPreferences("user",MODE_PRIVATE);
         editor = sp.edit();
+        this.user_id = sp.getString("account","");//2
         iv_back = findViewById(R.id.iv_back);
         bt_submit = findViewById(R.id.bt_submit);
         et_dates = findViewById(R.id.et_dates);
@@ -44,6 +46,7 @@ public class AddActivity extends AppCompatActivity implements View.OnClickListen
 
     }
 
+    //从数据库中获取数据
     public String[] getData(){
         int pos = 0;
         MySqlite mySQLite = new MySqlite(AddActivity.this, 1);
@@ -62,10 +65,10 @@ public class AddActivity extends AppCompatActivity implements View.OnClickListen
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.iv_back:
+            case R.id.iv_back:  //当点击返回按钮（R.id.iv_back）时，调用finish()结束当前活动
                 finish();
                 break;
-            case R.id.bt_submit:
+            case R.id.bt_submit:   //当点击提交按钮（R.id.bt_submit）时，获取用户输入的数据并将其插入到数据库中
                 money = et_money.getText().toString().trim();
                 dates = et_dates.getText().toString().trim();
                 time = et_time.getText().toString().trim();
@@ -82,6 +85,7 @@ public class AddActivity extends AppCompatActivity implements View.OnClickListen
                 values.put("dates",dates);
                 values.put("money",money);
                 values.put("time",time);
+                values.put("user_id",user_id);//3
                 db.insert("intoTable", null, values);
                 db.close();
                 Toast.makeText(this,"添加成功", Toast.LENGTH_SHORT).show();

@@ -39,6 +39,8 @@ public class FitnessAchievementActivity extends AppCompatActivity implements Vie
     private ListView lv;
     private MySqlite mySqlite;
     private SQLiteDatabase db;
+    private String user_id;//1
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +53,7 @@ public class FitnessAchievementActivity extends AppCompatActivity implements Vie
 
         sp = getSharedPreferences("user",MODE_PRIVATE);
         editor = sp.edit();
+        this.user_id = sp.getString("account","");//2
 
         lv = (ListView) findViewById(R.id.lv);
         list = new ArrayList<>();
@@ -154,11 +157,14 @@ public class FitnessAchievementActivity extends AppCompatActivity implements Vie
         }
     }
 
+    //从数据库中获取数据
     public List<Map<String, String>> getData(){
         list.clear();
         MySqlite mySQLite = new MySqlite(this, 1);
         SQLiteDatabase database = mySQLite.getReadableDatabase();
-        Cursor cursor = database.rawQuery("select * from intoTable order by dates desc,time desc", null);
+        String sql = "SELECT * FROM intoTable WHERE user_id = ? ORDER BY dates DESC";//3
+        Cursor cursor = database.rawQuery(sql, new String[]{user_id});//4
+//        Cursor cursor = database.rawQuery("select * from intoTable order by dates desc,time desc", null);
         System.out.println(cursor.getCount());
         while (cursor.moveToNext()) {
             String id = cursor.getString(cursor.getColumnIndex("id"));

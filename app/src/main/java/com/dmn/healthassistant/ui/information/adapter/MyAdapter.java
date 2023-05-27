@@ -23,9 +23,9 @@ import java.util.List;
 
 public class MyAdapter extends BaseAdapter {
 
-    private List<ItemBean> mBeanList;
-    private LayoutInflater mLayoutInflater;
-    private Context mContext;
+    private List<ItemBean> mBeanList; //存储文章数据
+    private LayoutInflater mLayoutInflater;  //创建视图
+    private Context mContext;    //获取上下文
 
     public MyAdapter(Context context,List<ItemBean> beanList){
         this.mContext = context;
@@ -36,12 +36,12 @@ public class MyAdapter extends BaseAdapter {
     @Override
     public int getCount() {
         return mBeanList.size();
-    }
+    }   //返回文章列表的大小，告诉 ListView 有多少个列表项。
 
     @Override
     public Object getItem(int i) {
         return mBeanList.get(i);
-    }
+    }  //返回指定位置的文章数据，告诉 ListView 每个列表项的数据。
 
     @Override
     public long getItemId(int i) {
@@ -95,7 +95,7 @@ public class MyAdapter extends BaseAdapter {
     }
 }
 
-//这段代码定义了一个名为 MyAdapter 的类，它继承自 BaseAdapter 类，用于为 ListView 或 GridView 等控件提供数据。
+//这段代码定义了一个名为 MyAdapter 的类，它继承自 BaseAdapter 类，用于为 ListView 提供数据。
 //
 //在 MyAdapter 类的构造方法中，传入了一个 Context 对象和一个 ItemBean 对象的列表。Context 对象用于获取 LayoutInflater 对象，ItemBean 对象的列表用于存储要显示的数据。
 //
