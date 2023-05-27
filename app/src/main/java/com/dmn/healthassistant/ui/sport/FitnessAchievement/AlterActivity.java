@@ -26,7 +26,7 @@ public class AlterActivity extends AppCompatActivity implements View.OnClickList
     private String types, dates, money,time,id;
     private SharedPreferences sp;
     private SharedPreferences.Editor editor;
-    private String user_id;//1
+    private String account;//1
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +34,7 @@ public class AlterActivity extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_alter);
         sp = getSharedPreferences("user",MODE_PRIVATE);
         editor = sp.edit();
-        this.user_id = sp.getString("account","");//2
+        this.account = sp.getString("account","");//2
         id = sp.getString("id","");
         types = sp.getString("types","");
         dates = sp.getString("dates","");
@@ -96,8 +96,8 @@ public class AlterActivity extends AppCompatActivity implements View.OnClickList
                 values.put("money",money);
                 values.put("time",time);
 
-                String whereClause = "id = ? AND user_id = ?";//3
-                String[] whereArgs = new String[]{id, user_id };//4
+                String whereClause = "id = ? AND account = ?";//3
+                String[] whereArgs = new String[]{id, account };//4
                 db.update("intoTable", values, whereClause, whereArgs);//5
 //                db.update("intoTable",values,"id=?",new String[]{id});
                 db.close();

@@ -39,7 +39,7 @@ public class FitnessAchievementActivity extends AppCompatActivity implements Vie
     private ListView lv;
     private MySqlite mySqlite;
     private SQLiteDatabase db;
-    private String user_id;//1
+    private String account;//1
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +53,7 @@ public class FitnessAchievementActivity extends AppCompatActivity implements Vie
 
         sp = getSharedPreferences("user",MODE_PRIVATE);
         editor = sp.edit();
-        this.user_id = sp.getString("account","");//2
+        this.account = sp.getString("account","");//2
 
         lv = (ListView) findViewById(R.id.lv);
         list = new ArrayList<>();
@@ -162,8 +162,8 @@ public class FitnessAchievementActivity extends AppCompatActivity implements Vie
         list.clear();
         MySqlite mySQLite = new MySqlite(this, 1);
         SQLiteDatabase database = mySQLite.getReadableDatabase();
-        String sql = "SELECT * FROM intoTable WHERE user_id = ? ORDER BY dates DESC";//3
-        Cursor cursor = database.rawQuery(sql, new String[]{user_id});//4
+        String sql = "SELECT * FROM intoTable WHERE account = ? ORDER BY dates DESC";//3
+        Cursor cursor = database.rawQuery(sql, new String[]{account});//4
 //        Cursor cursor = database.rawQuery("select * from intoTable order by dates desc,time desc", null);
         System.out.println(cursor.getCount());
         while (cursor.moveToNext()) {

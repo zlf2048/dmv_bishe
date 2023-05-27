@@ -25,7 +25,7 @@ public class AddActivity extends AppCompatActivity implements View.OnClickListen
     private String types, dates, money,time;
     private SharedPreferences sp;
     private SharedPreferences.Editor editor;
-    private String user_id;//1
+    private String account;//1
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +33,7 @@ public class AddActivity extends AppCompatActivity implements View.OnClickListen
         setContentView(R.layout.activity_add);
         sp = getSharedPreferences("user",MODE_PRIVATE);
         editor = sp.edit();
-        this.user_id = sp.getString("account","");//2
+        this.account = sp.getString("account","");//2
         iv_back = findViewById(R.id.iv_back);
         bt_submit = findViewById(R.id.bt_submit);
         et_dates = findViewById(R.id.et_dates);
@@ -85,7 +85,7 @@ public class AddActivity extends AppCompatActivity implements View.OnClickListen
                 values.put("dates",dates);
                 values.put("money",money);
                 values.put("time",time);
-                values.put("user_id",user_id);//3
+                values.put("user_id",account);//3
                 db.insert("intoTable", null, values);
                 db.close();
                 Toast.makeText(this,"添加成功", Toast.LENGTH_SHORT).show();
