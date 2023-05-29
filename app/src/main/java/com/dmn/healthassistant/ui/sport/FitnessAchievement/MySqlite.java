@@ -7,14 +7,14 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import com.dmn.healthassistant.util.LoginInfo;
+
 public class MySqlite extends SQLiteOpenHelper {
     private Context context;
-    private String account;//1
+    private String user_id;//1
     public MySqlite(@Nullable Context context, int version) {
-        super(context, "caiwu.db", null, version);
+        super(context, "achievement.db", null, version);
         this.context = context;
-        SharedPreferences sp = context.getSharedPreferences("user", Context.MODE_PRIVATE);//2
-        this.account = sp.getString("account", "");//3
     }
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
@@ -25,7 +25,7 @@ public class MySqlite extends SQLiteOpenHelper {
                 "money text," +
                 "dates text," +
                 "time text," +
-                "account text);");//4
+                "user_id text);");//4
 
         sqLiteDatabase.execSQL("create table outTable("+
                 "id INTEGER PRIMARY KEY AUTOINCREMENT," +
@@ -33,7 +33,7 @@ public class MySqlite extends SQLiteOpenHelper {
                 "money text," +
                 "dates text," +
                 "time text," +
-                "account text);");//5
+                "user_id text);");//5
 
         sqLiteDatabase.execSQL("create table intoTypes("+
                 "name text);");

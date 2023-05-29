@@ -2,6 +2,7 @@ package com.dmn.healthassistant.ui.sport.FitnessAchievement;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -20,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.dmn.healthassistant.R;
+import com.dmn.healthassistant.util.LoginInfo;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -39,7 +41,7 @@ public class FitnessAchievementActivity extends AppCompatActivity implements Vie
     private ListView lv;
     private MySqlite mySqlite;
     private SQLiteDatabase db;
-    private String account;//1
+    private String user_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,9 +53,10 @@ public class FitnessAchievementActivity extends AppCompatActivity implements Vie
         tv_add.setOnClickListener(this);
         iv_back.setOnClickListener(this);
 
-        sp = getSharedPreferences("user",MODE_PRIVATE);
-        editor = sp.edit();
-        this.account = sp.getString("account","");//2
+        LoginInfo loginInfo = new LoginInfo(FitnessAchievementActivity.this);
+        if(loginInfo.getLoginInfo() != null) {
+            this.user_id = loginInfo.getLoginInfo().getId();
+        }
 
         lv = (ListView) findViewById(R.id.lv);
         list = new ArrayList<>();
@@ -92,6 +95,8 @@ public class FitnessAchievementActivity extends AppCompatActivity implements Vie
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                sp = getSharedPreferences("user",MODE_PRIVATE);
+                editor = sp.edit();
                 editor.putString("types",list.get(i).get("types"));
                 editor.putString("dates",list.get(i).get("dates"));
                 editor.putString("time",list.get(i).get("time"));
@@ -162,16 +167,16 @@ public class FitnessAchievementActivity extends AppCompatActivity implements Vie
         list.clear();
         MySqlite mySQLite = new MySqlite(this, 1);
         SQLiteDatabase database = mySQLite.getReadableDatabase();
-        String sql = "SELECT * FROM intoTable WHERE account = ? ORDER BY dates DESC";//3
-        Cursor cursor = database.rawQuery(sql, new String[]{account});//4
+        String sql = "SELECT * FROM intoTable WHERE user_id = ? ORDER BY dates DESC";//3
+        Cursor cursor = database.rawQuery(sql, new String[]{user_id});//4
 //        Cursor cursor = database.rawQuery("select * from intoTable order by dates desc,time desc", null);
         System.out.println(cursor.getCount());
         while (cursor.moveToNext()) {
-            String id = cursor.getString(cursor.getColumnIndex("id"));
-            String money = cursor.getString(cursor.getColumnIndex("money"));
-            String dates = cursor.getString(cursor.getColumnIndex("dates"));
-            String time = cursor.getString(cursor.getColumnIndex("time"));
-            String types = cursor.getString(cursor.getColumnIndex("types"));
+            @SuppressLint("Range") String id = cursor.getString(cursor.getColumnIndex("id"));
+            @SuppressLint("Range") String money = cursor.getString(cursor.getColumnIndex("money"));
+            @SuppressLint("Range") String dates = cursor.getString(cursor.getColumnIndex("dates"));
+            @SuppressLint("Range") String time = cursor.getString(cursor.getColumnIndex("time"));
+            @SuppressLint("Range") String types = cursor.getString(cursor.getColumnIndex("types"));
             Map<String, String> map = new HashMap<>();
             map.put("id",id);
             map.put("money",money);

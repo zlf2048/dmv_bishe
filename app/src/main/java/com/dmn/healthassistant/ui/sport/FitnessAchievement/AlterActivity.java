@@ -2,6 +2,7 @@ package com.dmn.healthassistant.ui.sport.FitnessAchievement;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.SharedPreferences;
 import android.database.Cursor;
@@ -17,6 +18,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.dmn.healthassistant.R;
+import com.dmn.healthassistant.util.LoginInfo;
 
 public class AlterActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -26,7 +28,7 @@ public class AlterActivity extends AppCompatActivity implements View.OnClickList
     private String types, dates, money,time,id;
     private SharedPreferences sp;
     private SharedPreferences.Editor editor;
-    private String account;//1
+    private String user_id;//1
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +36,12 @@ public class AlterActivity extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_alter);
         sp = getSharedPreferences("user",MODE_PRIVATE);
         editor = sp.edit();
-        this.account = sp.getString("account","");//2
+
+        LoginInfo loginInfo = new LoginInfo(AlterActivity.this);
+        if(loginInfo.getLoginInfo() != null) {
+            this.user_id = loginInfo.getLoginInfo().getId();
+        }
+
         id = sp.getString("id","");
         types = sp.getString("types","");
         dates = sp.getString("dates","");
@@ -65,7 +72,7 @@ public class AlterActivity extends AppCompatActivity implements View.OnClickList
         System.out.println(cursor.getCount());
         String[] strings = new String[cursor.getCount()];
         while (cursor.moveToNext()) {
-            String name = cursor.getString(cursor.getColumnIndex("name"));
+            @SuppressLint("Range") String name = cursor.getString(cursor.getColumnIndex("name"));
             strings[pos] = name;
             pos++;
         }
@@ -96,8 +103,8 @@ public class AlterActivity extends AppCompatActivity implements View.OnClickList
                 values.put("money",money);
                 values.put("time",time);
 
-                String whereClause = "id = ? AND account = ?";//3
-                String[] whereArgs = new String[]{id, account };//4
+                String whereClause = "id = ? AND user_id = ?";//3
+                String[] whereArgs = new String[]{id, user_id };//4
                 db.update("intoTable", values, whereClause, whereArgs);//5
 //                db.update("intoTable",values,"id=?",new String[]{id});
                 db.close();

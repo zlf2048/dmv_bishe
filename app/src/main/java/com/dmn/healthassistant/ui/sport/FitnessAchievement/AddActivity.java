@@ -1,5 +1,6 @@
 package com.dmn.healthassistant.ui.sport.FitnessAchievement;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.SharedPreferences;
 import android.database.Cursor;
@@ -17,23 +18,19 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.dmn.healthassistant.R;
+import com.dmn.healthassistant.util.LoginInfo;
 
 public class AddActivity extends AppCompatActivity implements View.OnClickListener {
     private ImageView iv_back;
     private Button bt_submit;
     private EditText et_money,et_dates,et_time;
     private String types, dates, money,time;
-    private SharedPreferences sp;
-    private SharedPreferences.Editor editor;
-    private String account;//1
+    private String user_id;//1
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add);
-        sp = getSharedPreferences("user",MODE_PRIVATE);
-        editor = sp.edit();
-        this.account = sp.getString("account","");//2
         iv_back = findViewById(R.id.iv_back);
         bt_submit = findViewById(R.id.bt_submit);
         et_dates = findViewById(R.id.et_dates);
@@ -55,7 +52,7 @@ public class AddActivity extends AppCompatActivity implements View.OnClickListen
         System.out.println(cursor.getCount());
         String[] strings = new String[cursor.getCount()];
         while (cursor.moveToNext()) {
-            String name = cursor.getString(cursor.getColumnIndex("name"));
+            @SuppressLint("Range") String name = cursor.getString(cursor.getColumnIndex("name"));
             strings[pos] = name;
             pos++;
         }
@@ -85,7 +82,13 @@ public class AddActivity extends AppCompatActivity implements View.OnClickListen
                 values.put("dates",dates);
                 values.put("money",money);
                 values.put("time",time);
-                values.put("user_id",account);//3
+
+                LoginInfo loginInfo = new LoginInfo(AddActivity.this);
+                if(loginInfo.getLoginInfo() != null) {
+                    this.user_id = loginInfo.getLoginInfo().getId();
+                }
+                values.put("user_id", user_id);
+
                 db.insert("intoTable", null, values);
                 db.close();
                 Toast.makeText(this,"添加成功", Toast.LENGTH_SHORT).show();
